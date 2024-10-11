@@ -6,9 +6,9 @@ import java.util.ArrayList;
 public class ClothingInventory {
     private List<Cloth> listClothes; //List of clothes
     private SalesRanking ranking; // The ranking of this inventory's items
-    private List<Integer> requestList; //List of requested items
+    private List<Integer> requestList ; //List of requested items
     /*
-     * EFFECTS: listClothes is instantiated as an empty list; ranking is instantiated
+     * EFFECTS: listClothes and requestList are instantiated as an empty lists; ranking is instantiated
      */
     public ClothingInventory(){
         //stub   
@@ -21,10 +21,7 @@ public class ClothingInventory {
         //stub   
     }
 
-    // EFFECTS: returns a list of clothes and their id
-    public List<Cloth> viewClothes(){
-        return null;
-    }
+
     /*
      * REQUIRES: clothId is non-negative and clothId is <= 9999
      * MODIFIES: this
@@ -59,14 +56,24 @@ public class ClothingInventory {
     }
     /*
      * REQUIRES: inputList.length() > 0
-     * EFFECTS: Searches the inputList for a cloth with the itemId. If found, the index in the list is returned;
-     *          otherwise, -1 is returned
+     * EFFECTS: Searches the clothing List for a cloth with the itemId. If found, 
+     *          the index of its first occurence in the list is returned; otherwise, -1 is returned
      */
-    public int searchListForClothes(List<Cloth> inputList,int itemId){
+    public int searchListForClothes(int itemId){
         return -1;
     }
+    // EFFECTS: returns a sequence of clothes and their id. if the list is empty, a message of this case is returned
+    public String viewClothes(){
+        return null;
+     }
     
     public SalesRanking getRanking(){
         return null;
+    }
+    public List<Cloth> getInventoryList(){
+        return null;
+    }
+    public int getRequestSize(){
+        return-1;
     }
 }
