@@ -21,6 +21,7 @@ public class ClothTest {
         testCloth.buy();
         assertEquals(1,testCloth.getPurchaseCount());
     }
+    @Test
     public void testBuyMultipleTimes(){
         testCloth.buy();
         testCloth.buy();
