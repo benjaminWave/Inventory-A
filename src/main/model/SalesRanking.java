@@ -13,7 +13,7 @@ public class SalesRanking {
     /*
      * MODIFIES: this
      * EFFECTS: Adds cloth to the itemList if an instance of an item with them same ID does not already exist in the list;
-     *          otherwise, it modifies the purchaseCount of the existing cloth item
+     *          it modifies the purchaseCount of the existing cloth item
      */
     public void update(Cloth cloth){
 
