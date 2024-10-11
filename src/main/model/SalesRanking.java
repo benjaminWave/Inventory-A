@@ -16,8 +16,8 @@ public class SalesRanking {
      *          it modifies the purchaseCount of the existing cloth item
      */
     public void update(Cloth cloth){
-        cloth.buy();
         if (itemList.isEmpty()){
+            cloth.buy();
             this.itemList.add(cloth);
         }
         else{
@@ -26,10 +26,12 @@ public class SalesRanking {
             for (Cloth item:this.itemList){
                 if (item.getId() == searchId){
                     canAdd = false;
+                    item.buy();
                     break;
                 }
             }
             if (canAdd == true){
+                cloth.buy();
                 this.itemList.add(cloth);
             } 
         }
