@@ -11,14 +11,16 @@ public class ClothingInventory {
      * EFFECTS: listClothes and requestList are instantiated as an empty lists; ranking is instantiated
      */
     public ClothingInventory(){
-        //stub   
+        listClothes = new ArrayList<>();
+        ranking = new SalesRanking();
+        requestList = new ArrayList<>();
     }
     /*
      * MODIFIES: this
      * EFFECTS: Adds a cloth object to the list
      */
     public void addCloth(Cloth cloth){
-        //stub   
+        listClothes.add(cloth);  
     }
 
 
@@ -29,19 +31,29 @@ public class ClothingInventory {
      *          If the item is found, it returns true, false otherwise
      */
     public boolean removeCloth(int clothId){
-        return false;
-
+        int foundIdIndex = searchListForClothes(clothId);
+        if (foundIdIndex==-1){
+            return false;  
+        }
+        listClothes.remove(foundIdIndex);
+        return true;
     }
-
     /*
      * REQUIRES: clothId is non-negative and clothId is <= 9999
      * MODIFIES: this
      * EFFECTS: Searches the clothing list for an instance of the given ID and removes the corresponding cloth 
-     *          while incrementing its purchase count and updating ranking. If the item is found, it returns true;
+     *          while  updating ranking. If the item is found, it returns true;
      *          false otherwise
      */
     public boolean buyItem(int clothId){
-        return false;
+        int foundIdIndex = searchListForClothes(clothId);
+        if (foundIdIndex==-1){
+            return false;  
+        }
+        ranking.update(listClothes.get(foundIdIndex));
+        ranking.organize();
+        listClothes.remove(foundIdIndex);
+        return true;
 
     }
 
@@ -49,10 +61,15 @@ public class ClothingInventory {
      * REQUIRES: clothId is non-negative and clothId is <= 9999
      * MODIFIES: this
      * EFFECTS: Searches the clothing list for an instance of the given ID. 
-     *          If the item isn't found it adds the item to the requestList and returns true ; false otherwise
+     *          If the item isn't found it adds the item's id to the requestList and returns true ; false otherwise
      */
     public boolean requestItem(int clothId){
-        return false;
+        int foundIdIndex = searchListForClothes(clothId);
+        if (foundIdIndex!=-1){
+            return false;  
+        }
+        requestList.add(clothId);
+        return true;
     }
     /*
      * REQUIRES: inputList.length() > 0
@@ -60,20 +77,44 @@ public class ClothingInventory {
      *          the index of its first occurence in the list is returned; otherwise, -1 is returned
      */
     public int searchListForClothes(int itemId){
+        int length = listClothes.size();
+        for (int i = 0;i<length;i++){
+          if (listClothes.get(i).getId()==itemId){
+            return i;
+          }  
+        }
         return -1;
     }
-    // EFFECTS: returns a sequence of clothes and their id. if the list is empty, a message of this case is returned
+// EFFECTS: returns a sequence of clothes and their id in order; if the ranking is empty, a message of this case is returned
+    public String displayRanking(){
+        if (ranking.getRanking().isEmpty()){
+            return "No clothes have been bought!";
+        }
+        String message = "Sales Ranking:";
+        for (Cloth cloth: ranking.getRanking()){
+            message+= " \n-"+cloth.getColor()+" "+cloth.getClothType()+" ("+ cloth.getPurchaseCount()+") "+"- " + cloth.getId();
+        }
+        return message;
+    }
+    // EFFECTS: returns a sequence of clothes and their id; if the list is empty, a message of this case is returned
     public String viewClothes(){
-        return null;
+        if (listClothes.isEmpty()){
+            return "There are no clothes added!";
+        }
+        String message = "Current Clothes:";
+        for (Cloth cloth:listClothes){
+            message+= " \n-"+cloth.getColor()+" "+cloth.getClothType()+" - " + cloth.getId();
+        }
+        return message;
      }
     
     public SalesRanking getRanking(){
-        return null;
+        return this.ranking;
     }
     public List<Cloth> getInventoryList(){
-        return null;
+        return this.listClothes;
     }
     public int getRequestSize(){
-        return-1;
+        return this.requestList.size();
     }
 }
