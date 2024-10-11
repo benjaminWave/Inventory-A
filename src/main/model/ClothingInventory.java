@@ -47,9 +47,7 @@ public class ClothingInventory {
         return false;
 
     }
-    public SalesRanking getRanking(){
-        return null;
-    }
+
     /*
      * REQUIRES: clothId is non-negative and clothId is <= 9999
      * MODIFIES: this
@@ -67,5 +65,8 @@ public class ClothingInventory {
     public int searchListForClothes(List<Cloth> inputList,int itemId){
         return -1;
     }
-
+    
+    public SalesRanking getRanking(){
+        return null;
+    }
 }
