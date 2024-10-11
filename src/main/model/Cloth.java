@@ -1,4 +1,5 @@
 package model;
+
 //Represents a cloth object that possesses an indentifier (id), color, clothType (Shirt or Trousers), 
 //and how many times it has been purchased (purchaseCount)
 public class Cloth {
@@ -6,35 +7,43 @@ public class Cloth {
     private String color; // Color of the cloth
     private int purchaseCount; // The amount of times the item has been bought
     private String clothType;
+
     /*
-     * REQUIRES: itemColor and itemType have a non-zero length; itemId is non-negative and itemId is <= 9999; 
-     *           itemColor and itemType are named appropriately
-     * EFFECTS: color is set to itemColor; clothType is set to itemType; id is set to itemId; purchaseCount is set to 0
+     * REQUIRES: itemColor and itemType have a non-zero length; itemId is
+     * non-negative and itemId is <= 9999;
+     * itemColor and itemType are named appropriately
+     * EFFECTS: color is set to itemColor; clothType is set to itemType; id is set
+     * to itemId; purchaseCount is set to 0
      */
-    public Cloth(String itemColor,String itemType,int itemId){
+    public Cloth(String itemColor, String itemType, int itemId) {
         this.color = itemColor;
         this.clothType = itemType;
         this.id = itemId;
         this.purchaseCount = 0;
 
     }
+
     /*
      * MODIFIES: this
      * EFFECTS: Increments the value of purchaseCount by 1
      */
-    public void buy(){
+    public void buy() {
         this.purchaseCount++;
     }
-    public int getId(){
+
+    public int getId() {
         return this.id;
     }
-    public String getColor(){
+
+    public String getColor() {
         return this.color;
     }
-    public String getClothType(){
+
+    public String getClothType() {
         return this.clothType;
     }
-    public int getPurchaseCount(){
+
+    public int getPurchaseCount() {
         return this.purchaseCount;
     }
 }
