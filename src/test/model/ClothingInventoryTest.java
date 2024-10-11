@@ -1,4 +1,5 @@
 package model;
+
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.*;
 
@@ -7,165 +8,180 @@ public class ClothingInventoryTest {
     Cloth testCloth;
     Cloth testCloth2;
     Cloth testCloth3;
+
     @BeforeEach
-    public void runBefore(){
+    public void runBefore() {
         testInventory = new ClothingInventory();
-        testCloth = new Cloth("Blue","Shirt",1234);
-        testCloth2 = new Cloth("Yellow","Shirt",1753);
-        testCloth3 = new Cloth("Black","Trousers",4888);
+        testCloth = new Cloth("Blue", "Shirt", 1234);
+        testCloth2 = new Cloth("Yellow", "Shirt", 1753);
+        testCloth3 = new Cloth("Black", "Trousers", 4888);
     }
+
     @Test
-    public void testConstructor(){
-        assertEquals(0,testInventory.getInventoryList().size());
-        assertEquals(0,testInventory.getRequestSize());
+    public void testConstructor() {
+        assertEquals(0, testInventory.getInventoryList().size());
+        assertEquals(0, testInventory.getRequestSize());
     }
+
     @Test
-    public void testAddCloth(){
+    public void testAddCloth() {
         testInventory.addCloth(testCloth);
-        assertEquals(1234,testInventory.getInventoryList().get(0).getId());
-        assertEquals(1,testInventory.getInventoryList().size());
+        assertEquals(1234, testInventory.getInventoryList().get(0).getId());
+        assertEquals(1, testInventory.getInventoryList().size());
         testInventory.addCloth(testCloth);
-        assertEquals(1234,testInventory.getInventoryList().get(1).getId());
-        assertEquals(2,testInventory.getInventoryList().size());
+        assertEquals(1234, testInventory.getInventoryList().get(1).getId());
+        assertEquals(2, testInventory.getInventoryList().size());
         testInventory.addCloth(testCloth2);
-        assertEquals(1753,testInventory.getInventoryList().get(2).getId());
-        assertEquals(3,testInventory.getInventoryList().size());
+        assertEquals(1753, testInventory.getInventoryList().get(2).getId());
+        assertEquals(3, testInventory.getInventoryList().size());
     }
+
     @Test
-    public void testRemoveClothesPresent(){
+    public void testRemoveClothesPresent() {
         testInventory.addCloth(testCloth);
         testInventory.addCloth(testCloth);
         testInventory.addCloth(testCloth2);
         assertTrue(testInventory.removeCloth(testCloth.getId()));
-        assertEquals(2,testInventory.getInventoryList().size());
+        assertEquals(2, testInventory.getInventoryList().size());
         assertTrue(testInventory.removeCloth(testCloth.getId()));
-        assertEquals(1,testInventory.getInventoryList().size());
-        assertEquals(1753,testInventory.getInventoryList().get(0).getId());
+        assertEquals(1, testInventory.getInventoryList().size());
+        assertEquals(1753, testInventory.getInventoryList().get(0).getId());
         assertTrue(testInventory.removeCloth(testCloth2.getId()));
-        assertEquals(0,testInventory.getInventoryList().size());
+        assertEquals(0, testInventory.getInventoryList().size());
     }
+
     @Test
-    public void testRemoveClothesNotPresent(){
+    public void testRemoveClothesNotPresent() {
         testInventory.addCloth(testCloth);
         testInventory.addCloth(testCloth);
         testInventory.addCloth(testCloth2);
         assertFalse(testInventory.removeCloth(testCloth3.getId()));
-        assertEquals(3,testInventory.getInventoryList().size());
+        assertEquals(3, testInventory.getInventoryList().size());
     }
+
     @Test
-    public void testBuyItemPresent(){
+    public void testBuyItemPresent() {
         testInventory.addCloth(testCloth);
         testInventory.addCloth(testCloth);
         testInventory.addCloth(testCloth2);
         assertTrue(testInventory.buyItem(testCloth.getId()));
-        assertEquals(2,testInventory.getInventoryList().size());
+        assertEquals(2, testInventory.getInventoryList().size());
         assertTrue(testInventory.buyItem(testCloth.getId()));
-        assertEquals(1,testInventory.getInventoryList().size());
-        assertEquals(1,testInventory.getRanking().getRanking().size());
-        assertEquals(1753,testInventory.getInventoryList().get(0).getId());
+        assertEquals(1, testInventory.getInventoryList().size());
+        assertEquals(1, testInventory.getRanking().getRanking().size());
+        assertEquals(1753, testInventory.getInventoryList().get(0).getId());
         assertTrue(testInventory.buyItem(testCloth2.getId()));
-        assertEquals(0,testInventory.getInventoryList().size());
-        assertEquals(2,testInventory.getRanking().getRanking().size());
+        assertEquals(0, testInventory.getInventoryList().size());
+        assertEquals(2, testInventory.getRanking().getRanking().size());
     }
+
     @Test
-    public void testBuyItemNotPresent(){
+    public void testBuyItemNotPresent() {
         assertFalse(testInventory.buyItem(testCloth.getId()));
-        assertEquals(0,testInventory.getInventoryList().size());
-        assertEquals(0,testInventory.getRanking().getRanking().size());
+        assertEquals(0, testInventory.getInventoryList().size());
+        assertEquals(0, testInventory.getRanking().getRanking().size());
         testInventory.addCloth(testCloth);
         testInventory.addCloth(testCloth);
         testInventory.addCloth(testCloth2);
         assertFalse(testInventory.buyItem(testCloth3.getId()));
-        assertEquals(3,testInventory.getInventoryList().size());
-        assertEquals(0,testInventory.getRanking().getRanking().size());
+        assertEquals(3, testInventory.getInventoryList().size());
+        assertEquals(0, testInventory.getRanking().getRanking().size());
     }
+
     @Test
-    public void testRequestItemPresent(){
+    public void testRequestItemPresent() {
         testInventory.addCloth(testCloth);
         testInventory.addCloth(testCloth);
         testInventory.addCloth(testCloth2);
         assertFalse(testInventory.requestItem(testCloth.getId()));
-        assertEquals(0,testInventory.getRequestSize());
+        assertEquals(0, testInventory.getRequestSize());
         testInventory.requestItem(testCloth3.getId());
         assertFalse(testInventory.requestItem(testCloth2.getId()));
-        assertEquals(1,testInventory.getRequestSize()); 
+        assertEquals(1, testInventory.getRequestSize());
 
     }
+
     @Test
-    public void testRequestItemPresentAfterRemovedDuplicate(){
+    public void testRequestItemPresentAfterRemovedDuplicate() {
         testInventory.addCloth(testCloth);
         testInventory.addCloth(testCloth);
-        testInventory.addCloth(testCloth2);  
+        testInventory.addCloth(testCloth2);
         testInventory.removeCloth(testCloth.getId());
         assertFalse(testInventory.requestItem(testCloth.getId()));
-        assertEquals(0,testInventory.getRequestSize());
+        assertEquals(0, testInventory.getRequestSize());
     }
+
     @Test
-    public void testRequestItemNotPresent(){
+    public void testRequestItemNotPresent() {
         assertTrue(testInventory.requestItem(testCloth.getId()));
-        assertEquals(1,testInventory.getRequestSize());
+        assertEquals(1, testInventory.getRequestSize());
         testInventory.addCloth(testCloth);
         testInventory.addCloth(testCloth);
         assertTrue(testInventory.requestItem(testCloth3.getId()));
-        assertEquals(2,testInventory.getRequestSize());
+        assertEquals(2, testInventory.getRequestSize());
         assertTrue(testInventory.requestItem(testCloth3.getId()));
-        assertEquals(3,testInventory.getRequestSize());
+        assertEquals(3, testInventory.getRequestSize());
         assertTrue(testInventory.requestItem(testCloth2.getId()));
-        assertEquals(4,testInventory.getRequestSize());
+        assertEquals(4, testInventory.getRequestSize());
 
     }
+
     @Test
-    public void testSearchListForClothesPresent(){
+    public void testSearchListForClothesPresent() {
         testInventory.addCloth(testCloth);
         testInventory.addCloth(testCloth);
-        testInventory.addCloth(testCloth2);  
-        assertEquals(0,testInventory.searchListForClothes(testCloth.getId()));
-        assertEquals(2,testInventory.searchListForClothes(testCloth2.getId()));
+        testInventory.addCloth(testCloth2);
+        assertEquals(0, testInventory.searchListForClothes(testCloth.getId()));
+        assertEquals(2, testInventory.searchListForClothes(testCloth2.getId()));
         testInventory.addCloth(testCloth3);
-        assertEquals(3,testInventory.searchListForClothes(testCloth3.getId()));
+        assertEquals(3, testInventory.searchListForClothes(testCloth3.getId()));
         testInventory.addCloth(testCloth3);
-        assertEquals(3,testInventory.searchListForClothes(testCloth3.getId()));
+        assertEquals(3, testInventory.searchListForClothes(testCloth3.getId()));
     }
+
     @Test
-    public void testSearchListForClothesNotPresent(){
+    public void testSearchListForClothesNotPresent() {
         testInventory.addCloth(testCloth);
         testInventory.addCloth(testCloth);
-        testInventory.addCloth(testCloth2);  
-        assertEquals(-1,testInventory.searchListForClothes(testCloth3.getId()));
+        testInventory.addCloth(testCloth2);
+        assertEquals(-1, testInventory.searchListForClothes(testCloth3.getId()));
     }
+
     @Test
-    public void testViewClothes(){
+    public void testViewClothes() {
         testInventory.addCloth(testCloth);
         testInventory.addCloth(testCloth);
-        testInventory.addCloth(testCloth2);  
+        testInventory.addCloth(testCloth2);
         String message = "Current Clothes: \n-Blue Shirt - 1234 \n-Blue Shirt - 1234 \n-Yellow Shirt - 1753";
         assertEquals(message, testInventory.viewClothes());
     }
+
     @Test
-    public void testViewClothesEmptyList(){
+    public void testViewClothesEmptyList() {
         assertEquals("There are no clothes added!", testInventory.viewClothes());
     }
+
     @Test
-    public void testDisplayRanking(){
+    public void testDisplayRanking() {
         testInventory.addCloth(testCloth);
         testInventory.addCloth(testCloth3);
         testInventory.addCloth(testCloth3);
         testInventory.addCloth(testCloth3);
         testInventory.addCloth(testCloth2);
-        testInventory.addCloth(testCloth2);  
+        testInventory.addCloth(testCloth2);
         testInventory.buyItem(testCloth.getId());
         testInventory.buyItem(testCloth3.getId());
         testInventory.buyItem(testCloth3.getId());
         testInventory.buyItem(testCloth3.getId());
         testInventory.buyItem(testCloth2.getId());
         testInventory.buyItem(testCloth2.getId());
-        String message = "Sales Ranking: \n-Black Trousers (3) - 4888 \n-Yellow Shirt (2) - 1753 \n-Blue Shirt (1) - 1234";
+        String message = "Sales Ranking: \n-Black Trousers (3) - 4888 "
+                + "\n-Yellow Shirt (2) - 1753 \n-Blue Shirt (1) - 1234";
         assertEquals(message, testInventory.displayRanking());
     }
+
     @Test
-    public void testDisplayRankingEmpty(){
+    public void testDisplayRankingEmpty() {
         assertEquals("No clothes have been bought!", testInventory.displayRanking());
     }
-   
-
 }
