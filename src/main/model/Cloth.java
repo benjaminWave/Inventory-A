@@ -12,25 +12,29 @@ public class Cloth {
      * EFFECTS: color is set to itemColor; clothType is set to itemType; id is set to itemId; purchaseCount is set to 0
      */
     public Cloth(String itemColor,String itemType,int itemId){
-        //stub
+        this.color = itemColor;
+        this.clothType = itemType;
+        this.id = itemId;
+        this.purchaseCount = 0;
+
     }
     /*
      * MODIFIES: this
      * EFFECTS: Increments the value of purchaseCount by 1
      */
     public void buy(){
-        //stub
+        this.purchaseCount++;
     }
     public int getId(){
-        return -1;
+        return this.id;
     }
     public String getColor(){
-        return null;
+        return this.color;
     }
     public String getClothType(){
-        return null;
+        return this.clothType;
     }
     public int getPurchaseCount(){
-        return -1;
+        return this.purchaseCount;
     }
 }
