@@ -9,7 +9,7 @@ public class Cloth {
     /*
      * REQUIRES: itemColor and itemType have a non-zero length; itemId is non-negative and itemId is <= 9999; 
      *           itemColor and itemType are named appropriately
-     * EFFECTS: color is set to itemColor; clothType is set to itemType; id is set to itemId
+     * EFFECTS: color is set to itemColor; clothType is set to itemType; id is set to itemId; purchaseCount is set to 0
      */
     public Cloth(String itemColor,String itemType,int itemId){
         //stub
@@ -29,5 +29,8 @@ public class Cloth {
     }
     public String getClothType(){
         return null;
+    }
+    public int getPurchaseCount(){
+        return -1;
     }
 }
