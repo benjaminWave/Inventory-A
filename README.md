@@ -9,6 +9,8 @@ My project, *Inventory A*, is a desktop software that functions as an inventory 
 - As a user, I want to be able to see the sales for particular clothing items and an overall ranking of the most purchased items
 - As a user, I want to be able to delete an instance of a purchased item from the clothing inventory
 - As a user, I want to be able to send a request for a resupply of a particular item
+- As a user, I want to be able to save my current inventory to file
+- As a user, I want to be able to load my inventory from file
 
 
 
