@@ -1,0 +1,14 @@
+package model.persistence;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import model.Cloth;
+
+public class JsonTest {
+    protected void testCloth(String color, int count, String type, int id, Cloth cloth){
+         assertEquals(color, cloth.getColor());
+        assertEquals(type, cloth.getClothType());
+        assertEquals(id, cloth.getId());
+        assertEquals(count, cloth.getPurchaseCount());
+    }
+}

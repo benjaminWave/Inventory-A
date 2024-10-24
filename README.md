@@ -14,3 +14,5 @@ My project, *Inventory A*, is a desktop software that functions as an inventory 
 
 
 
+// Referenced from the JsonSerialization Demo
+// https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
