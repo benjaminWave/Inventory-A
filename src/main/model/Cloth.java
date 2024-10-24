@@ -1,8 +1,12 @@
 package model;
 
+import org.json.JSONObject;
+
+import persistence.Writable;
+
 //Represents a cloth object that possesses an indentifier (id), color, clothType (Shirt or Trousers), 
 //and how many times it has been purchased (purchaseCount)
-public class Cloth {
+public class Cloth implements Writable {
     private int id; // Unique identifier of the item
     private String color; // Color of the cloth
     private int purchaseCount; // The amount of times the item has been bought
@@ -45,5 +49,10 @@ public class Cloth {
 
     public int getPurchaseCount() {
         return this.purchaseCount;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        return null;
     }
 }

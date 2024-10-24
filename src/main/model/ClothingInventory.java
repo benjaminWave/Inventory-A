@@ -1,11 +1,15 @@
 package model;
 
 import java.util.List;
-import java.util.ArrayList;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import persistence.*;
 // Represents an inventory of clothes in possession of a company having a list of availale clothes, 
 // ranking of the sales the items and a list of clothes that are being requested 
-public class ClothingInventory {
+public class ClothingInventory implements Writable {
     private List<Cloth> listClothes; // List of clothes
     private SalesRanking ranking; // The ranking of this inventory's items
     private List<Integer> requestList; // List of requested items
@@ -134,4 +138,19 @@ public class ClothingInventory {
     public int getRequestSize() {
         return this.requestList.size();
     }
+
+    @Override
+    public JSONObject toJson() {
+        return null;
+       
+    }
+    //EFFECTS: returns the list of clothes as a JSONARRAY
+    private JSONArray clothesToJson(){
+        return null;
+    }
+    //EFFECTS: returns the list of requests as a JSONARRAY
+    private JSONArray requestsToJson(){
+        return null;
+    }
+
 }

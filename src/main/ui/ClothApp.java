@@ -1,17 +1,24 @@
 package ui;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 import model.Cloth;
 import model.ClothingInventory;
+import persistence.JsonWriter;
+
 
 public class ClothApp {
     private Scanner input;
     private ClothingInventory inventory;
     private boolean canRun;
+     private JsonWriter jsonWriter;
+     private static final String JSON_STORE = "./data/inventory.json";
 
     // EFFECTS: Starts the startMenu method
-    public ClothApp() {
+    public ClothApp(){
         startMenu();
     }
 
@@ -159,4 +166,5 @@ public class ClothApp {
 
         }
     }
+    
 }
