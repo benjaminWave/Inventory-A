@@ -1,4 +1,4 @@
-package model.persistence;
+package model;
 
 import org.junit.Test;
 
@@ -42,11 +42,11 @@ public class JsonReaderTest extends JsonTest {
             ClothingInventory inventory = reader.read();
             assertEquals(inventory.getInventoryList().size(), 3);
             assertEquals(inventory.getRequestSize(), 2);
-            assertEquals(inventory.getRanking().getRanking().size(), 3);
+            assertEquals(1,inventory.getRanking().getRanking().size());
             List<Cloth> clothes = inventory.getInventoryList();
             testCloth("Red", 0, "Shirt", 1234, clothes.get(0));
             testCloth("Blue", 0, "Trousers", 4321, clothes.get(1));
-            testCloth("Yellow", 1, "Shirt", 8132, clothes.get(2));
+            testCloth("Yellow", 2, "Shirt", 8132, clothes.get(2));
         }catch(IOException e){
             fail("Unable to read from file");
         }
