@@ -7,7 +7,7 @@
     "sales": [
         {
             "color": "Red",
-            "count": 2,
+            "count": 3,
             "id": 1234,
             "type": "Shirt"
         },

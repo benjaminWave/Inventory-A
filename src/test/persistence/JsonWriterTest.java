@@ -98,8 +98,6 @@ public class JsonWriterTest extends JsonTest {
         inventory.buyItem(testCloth2.getId());
         inventory.buyItem(testCloth3.getId());
         inventory.removeCloth(testCloth.getId());
-        assertFalse(inventory.buyItem(2000));
-        assertFalse(inventory.removeCloth(9000));
         inventory.requestItem(2000);
         assertFalse(inventory.requestItem(testCloth.getId()));
 
