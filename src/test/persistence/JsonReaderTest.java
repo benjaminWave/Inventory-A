@@ -1,4 +1,4 @@
-package model.persistence;
+package persistence;
 
 import org.junit.Test;
 

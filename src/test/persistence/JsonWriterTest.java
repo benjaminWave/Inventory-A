@@ -1,4 +1,4 @@
-package model.persistence;
+package persistence;
 
 import static org.junit.Assert.*;
 
