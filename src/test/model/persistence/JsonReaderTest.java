@@ -30,6 +30,8 @@ public class JsonReaderTest extends JsonTest {
             assertEquals(inventory.getInventoryList().size(), 0);
             assertEquals(inventory.getRequestSize(), 1);
             assertEquals(inventory.getRanking().getRanking().size(), 0);
+            assertEquals("There are no clothes added!", inventory.viewClothes());
+            assertEquals("No clothes have been bought!", inventory.displayRanking());
              
         }catch(IOException e){
             fail("Unable to read from file");
@@ -47,6 +49,8 @@ public class JsonReaderTest extends JsonTest {
             testCloth("Red", 0, "Shirt", 1234, clothes.get(0));
             testCloth("Blue", 0, "Trousers", 4321, clothes.get(1));
             testCloth("Yellow", 2, "Shirt", 8132, clothes.get(2));
+            String message = "Sales Ranking: \n-Yellow Shirt (2) - 8132";
+            assertEquals(message, inventory.displayRanking());
         }catch(IOException e){
             fail("Unable to read from file");
         }

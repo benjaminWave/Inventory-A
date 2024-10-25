@@ -141,16 +141,28 @@ public class ClothingInventory implements Writable {
 
     @Override
     public JSONObject toJson() {
-        return null;
+        JSONObject json = new JSONObject();
+        json.put("clothes",clothesToJson());
+        json.put("requests",requestsToJson());
+
+        return json;
        
     }
     //EFFECTS: returns the list of clothes as a JSONARRAY
     private JSONArray clothesToJson(){
-        return null;
+        JSONArray arrayJ = new JSONArray();
+        for (Cloth cloth : listClothes) {
+            arrayJ.put(cloth.toJson());
+        }
+        return arrayJ;
     }
     //EFFECTS: returns the list of requests as a JSONARRAY
     private JSONArray requestsToJson(){
-        return null;
+        JSONArray arrayJ = new JSONArray();
+        for (int id : requestList) {
+            arrayJ.put((new JSONObject()).put("id", id));
+        }
+        return arrayJ;
     }
 
 }

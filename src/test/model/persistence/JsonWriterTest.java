@@ -40,6 +40,7 @@ public class JsonWriterTest extends JsonTest {
     @Test
     public void testWriteEmptyInventory(){
         try{
+            runBefore();
             JsonWriter writer = new JsonWriter("./data/testWriterEmptyInventory.json");
             writer.open();
             writer.write(inventory);
@@ -49,6 +50,7 @@ public class JsonWriterTest extends JsonTest {
             assertEquals(inventoryRead .getInventoryList().size(), 0);
             assertEquals(inventoryRead .getRequestSize(), 0);
             assertEquals(inventoryRead .getRanking().getRanking().size(), 0);
+            assertEquals("There are no clothes added!", inventory.viewClothes());
 
 
         }catch(IOException e){
@@ -58,33 +60,45 @@ public class JsonWriterTest extends JsonTest {
     @Test
     public void TestWriteTypicalInventory(){
         try{
-            JsonWriter writer = new JsonWriter("./data/testWriterEmptyInventory.json");
+            runBefore();
+            testScenario();
+            JsonWriter writer = new JsonWriter("./data/testWriterTypicalInventory.json");
             writer.open();
-            inventory.addCloth(testCloth);
-            inventory.addCloth(testCloth2);
-            inventory.addCloth(testCloth2);
-            inventory.addCloth(testCloth3);
-            inventory.addCloth(testCloth3);
-            inventory.addCloth(testCloth3);
-            inventory.buyItem(testCloth3.getId());
-            inventory.buyItem(testCloth2.getId());
-            inventory.buyItem(testCloth3.getId());
-            inventory.requestItem(2000);
-            inventory.requestItem(3000);
             writer.write(inventory);
             writer.close();
-            JsonReader reader = new JsonReader("./data/testWriterEmptyInventory.json");
+            JsonReader reader = new JsonReader("./data/testWriterTypicalInventory.json");
             ClothingInventory inventoryRead = reader.read();
             assertEquals(inventoryRead .getInventoryList().size(), 3);
             assertEquals(inventoryRead .getRequestSize(), 2);
             assertEquals(inventoryRead .getRanking().getRanking().size(), 2);
             List<Cloth> clothes = inventory.getInventoryList();
-            testCloth(testCloth.getColor(), testCloth.getPurchaseCount(), testCloth.getClothType(), testCloth.getId(), clothes.get(0));
-            testCloth(testCloth2.getColor(), testCloth2.getPurchaseCount(), testCloth2.getClothType(), testCloth2.getId(), clothes.get(1));
-            testCloth(testCloth3.getColor(), testCloth3.getPurchaseCount(), testCloth3.getClothType(), testCloth3.getId(), clothes.get(2));
+            testCloth(testCloth.getColor(), testCloth.getPurchaseCount(), testCloth.getClothType(), testCloth.getId(), clothes.get(2));
+            testCloth(testCloth2.getColor(), testCloth2.getPurchaseCount(), testCloth2.getClothType(), testCloth2.getId(), clothes.get(0));
+            testCloth(testCloth3.getColor(), testCloth3.getPurchaseCount(), testCloth3.getClothType(), testCloth3.getId(), clothes.get(1));
+            String message = "Current Clothes: \n-Yellow Shirt - 1753 \n-Black Trousers - 4888 \n-Blue Shirt - 1234";
+            assertEquals(message, inventory.viewClothes());
 
         }catch(IOException e){
             fail("Exception should not have been thrown");
         }
+    }
+    private void testScenario(){
+        inventory.addCloth(testCloth);
+        inventory.addCloth(testCloth2);
+        inventory.addCloth(testCloth2);
+        inventory.addCloth(testCloth3);
+        inventory.addCloth(testCloth3);
+        inventory.addCloth(testCloth3);
+        inventory.addCloth(testCloth);
+        inventory.buyItem(testCloth3.getId());
+        inventory.buyItem(testCloth2.getId());
+        inventory.buyItem(testCloth3.getId());
+        inventory.removeCloth(testCloth.getId());
+        assertFalse(inventory.buyItem(2000));
+        assertFalse(inventory.removeCloth(9000));
+        inventory.requestItem(2000);
+        assertFalse(inventory.requestItem(testCloth.getId()));
+        
+        inventory.requestItem(3000);
     }
 }

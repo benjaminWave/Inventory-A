@@ -12,19 +12,24 @@ public class JsonWriter {
     private String destination;
     //EFFECTS: Sets the source to address
     public JsonWriter(String address){
+        destination = address;
     }  
     //MODIFIES: this
     //EFFECTS: creates the PrintWriter object.
     //FileNotFoundException thrown if dessination file cannot be opened for writing
 
     public void open() throws FileNotFoundException{
+        writer = new PrintWriter(new File(destination));
     }
     //MODIFIES: this
     //EFFECTS: converts inventory into a JSONObject and writes that data to destination files
     public void write(ClothingInventory inventory){
+        JSONObject objectJ = inventory.toJson();
+        writer.print(objectJ.toString(TAB));
     }
     //MODIFIES: this
     //EFFECTS: closes the writer
     public void close(){
+        writer.close();
     }
 }

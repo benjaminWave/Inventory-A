@@ -53,6 +53,11 @@ public class Cloth implements Writable {
 
     @Override
     public JSONObject toJson() {
-        return null;
+        JSONObject json = new JSONObject();
+        json.put("type", clothType);
+        json.put("color", color);
+        json.put("id", id);
+        json.put("count", purchaseCount);
+        return json;
     }
 }
