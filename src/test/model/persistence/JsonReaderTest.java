@@ -12,47 +12,50 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.*;
 import java.util.List;
+
 public class JsonReaderTest extends JsonTest {
     @Test
-    public void testReadNonExistentFile(){
+    public void testReadNonExistentFile() {
         JsonReader reader = new JsonReader("./data/noSuchFile.json");
-        try{
+        try {
             ClothingInventory inventory = reader.read();
-             fail("IOException expected");
-        }catch(IOException e){
-            //pass
+            fail("IOException expected");
+        } catch (IOException e) {
+            // pass
         }
     }
+
     @Test
-    public void testReadEmptyInventory(){
+    public void testReadEmptyInventory() {
         JsonReader reader = new JsonReader("./data/testReaderEmptyInventory.json");
-        try{
+        try {
             ClothingInventory inventory = reader.read();
             assertEquals(inventory.getInventoryList().size(), 0);
             assertEquals(inventory.getRequestSize(), 1);
             assertEquals(inventory.getRanking().getRanking().size(), 0);
             assertEquals("There are no clothes added!", inventory.viewClothes());
             assertEquals("No clothes have been bought!", inventory.displayRanking());
-             
-        }catch(IOException e){
+
+        } catch (IOException e) {
             fail("Unable to read from file");
         }
     }
+
     @Test
-    public void testReadTypicalInventory(){
-        JsonReader reader = new JsonReader("./data/testReaderTypicalInventory.json"); 
-        try{
+    public void testReadTypicalInventory() {
+        JsonReader reader = new JsonReader("./data/testReaderTypicalInventory.json");
+        try {
             ClothingInventory inventory = reader.read();
             assertEquals(inventory.getInventoryList().size(), 3);
             assertEquals(inventory.getRequestSize(), 2);
-            assertEquals(2,inventory.getRanking().getRanking().size());
+            assertEquals(2, inventory.getRanking().getRanking().size());
             List<Cloth> clothes = inventory.getInventoryList();
-            testCloth("Red",  "Shirt", 1234, clothes.get(0));
+            testCloth("Red", "Shirt", 1234, clothes.get(0));
             testCloth("Blue", "Trousers", 4321, clothes.get(1));
-            testCloth("Yellow",  "Shirt", 8132, clothes.get(2));
+            testCloth("Yellow", "Shirt", 8132, clothes.get(2));
             String message = "Sales Ranking: \n-Yellow Shirt (2) - 8132 \n-Purple Shirt (1) - 4932";
             assertEquals(message, inventory.displayRanking());
-        }catch(IOException e){
+        } catch (IOException e) {
             fail("Unable to read from file");
         }
     }

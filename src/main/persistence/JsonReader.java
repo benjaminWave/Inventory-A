@@ -1,4 +1,5 @@
 package persistence;
+
 import org.json.*;
 
 import model.Cloth;
@@ -10,22 +11,26 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
+
 //Represents a reader that reads saved JSON data and converts it into an inventory object
 public class JsonReader {
     private String source;
-    //EFFECTS: source is set to address
-    public JsonReader(String address){
+
+    // EFFECTS: source is set to address
+    public JsonReader(String address) {
         this.source = address;
     }
-    //EFFECTS: constructs an inventory object from JSON data and returns it
+
+    // EFFECTS: constructs an inventory object from JSON data and returns it
     // throws IOException if an error occurs reading data from file
-    public ClothingInventory read() throws IOException{
+    public ClothingInventory read() throws IOException {
         String data = readFile();
         JSONObject jsonObject = new JSONObject(data);
         return parseInventory(jsonObject);
     }
-    //EFFECTS: constructs a string from the source file and returns it
-    private String readFile() throws IOException{
+
+    // EFFECTS: constructs a string from the source file and returns it
+    private String readFile() throws IOException {
         StringBuilder contentBuilder = new StringBuilder();
 
         try (Stream<String> stream = Files.lines(Paths.get(source), StandardCharsets.UTF_8)) {
@@ -34,51 +39,58 @@ public class JsonReader {
 
         return contentBuilder.toString();
     }
-    //EFFECTS: constructs an inventory object from the jsonObject and returns it
-    private ClothingInventory parseInventory(JSONObject jsonObject){
+
+    // EFFECTS: constructs an inventory object from the jsonObject and returns it
+    private ClothingInventory parseInventory(JSONObject jsonObject) {
         ClothingInventory inventory = new ClothingInventory();
         addClothes(inventory, jsonObject);
         addRequests(inventory, jsonObject);
-        addSales(inventory,jsonObject);
+        addSales(inventory, jsonObject);
         return inventory;
     }
-    //EFFECTS: constructs Clothes from the jsonObject and adds them to inventory
-    private void addClothes(ClothingInventory inventory,JSONObject jsonObject){
+
+    // EFFECTS: constructs Clothes from the jsonObject and adds them to inventory
+    private void addClothes(ClothingInventory inventory, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("clothes");
-        for (Object object:jsonArray){
-            JSONObject currentObject = (JSONObject)object;
+        for (Object object : jsonArray) {
+            JSONObject currentObject = (JSONObject) object;
             inventory.addCloth(createCloth(currentObject));
         }
     }
-     //EFFECTS: updates the SalesRanking of the inventory
-     private void addSales(ClothingInventory inventory,JSONObject jsonObject){
+
+    // EFFECTS: updates the SalesRanking of the inventory
+    private void addSales(ClothingInventory inventory, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("sales");
-        for (Object object:jsonArray){
-            JSONObject currentObject = (JSONObject)object;
-            buy(inventory,createCloth(currentObject),currentObject);
+        for (Object object : jsonArray) {
+            JSONObject currentObject = (JSONObject) object;
+            buy(inventory, createCloth(currentObject), currentObject);
         }
     }
-    //EFFECTS: constructs an instance of a cloth from the jsonObject and returns it
-    private Cloth createCloth(JSONObject jsonObject){
+
+    // EFFECTS: constructs an instance of a cloth from the jsonObject and returns it
+    private Cloth createCloth(JSONObject jsonObject) {
         Cloth cloth = new Cloth(jsonObject.getString("color"), jsonObject.getString("type"), jsonObject.getInt("id"));
         return cloth;
     }
-    //EFFECTS: increments purchase count of an item buy repeatedly buying and adding it to the inventory  
-    private void buy(ClothingInventory inventory,Cloth cloth,JSONObject jsonObject){
+
+    // EFFECTS: increments purchase count of an item buy repeatedly buying and
+    // adding it to the inventory
+    private void buy(ClothingInventory inventory, Cloth cloth, JSONObject jsonObject) {
         int count = 0;
         int max = jsonObject.getInt("count");
-        while (max > count ){
+        while (max > count) {
             inventory.addCloth(cloth);
             inventory.buyItem(cloth.getId());
-            
+
             count++;
         }
     }
-    //EFFECTS: parses the RequestList and adds it to the inventory
-    private void addRequests(ClothingInventory inventory,JSONObject jsonObject){
+
+    // EFFECTS: parses the RequestList and adds it to the inventory
+    private void addRequests(ClothingInventory inventory, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("requests");
-        for (Object object:jsonArray){
-            JSONObject currentObject = (JSONObject)object;
+        for (Object object : jsonArray) {
+            JSONObject currentObject = (JSONObject) object;
             inventory.requestItem(currentObject.getInt("id"));
         }
     }

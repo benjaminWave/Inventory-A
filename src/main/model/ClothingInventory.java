@@ -7,6 +7,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import persistence.*;
+
 // Represents an inventory of clothes in possession of a company having a list of availale clothes, 
 // ranking of the sales the items and a list of clothes that are being requested 
 public class ClothingInventory implements Writable {
@@ -142,32 +143,34 @@ public class ClothingInventory implements Writable {
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
-        json.put("clothes",clothesToJson());
-        json.put("requests",requestsToJson());
-        json.put("sales",salesToJson());
-
+        json.put("clothes", clothesToJson());
+        json.put("requests", requestsToJson());
+        json.put("sales", salesToJson());
 
         return json;
-       
+
     }
-    //EFFECTS: returns the list of clothes as a JSONARRAY
-    private JSONArray clothesToJson(){
+
+    // EFFECTS: returns the list of clothes as a JSONARRAY
+    private JSONArray clothesToJson() {
         JSONArray arrayJ = new JSONArray();
         for (Cloth cloth : listClothes) {
             arrayJ.put(cloth.toJson());
         }
         return arrayJ;
     }
-     //EFFECTS: returns the list of sold clothes as a JSONARRAY
-    private JSONArray salesToJson(){
+
+    // EFFECTS: returns the list of sold clothes as a JSONARRAY
+    private JSONArray salesToJson() {
         JSONArray arrayJ = new JSONArray();
         for (Cloth cloth : ranking.getRanking()) {
             arrayJ.put(cloth.toJson());
         }
         return arrayJ;
     }
-    //EFFECTS: returns the list of requests as a JSONARRAY
-    private JSONArray requestsToJson(){
+
+    // EFFECTS: returns the list of requests as a JSONARRAY
+    private JSONArray requestsToJson() {
         JSONArray arrayJ = new JSONArray();
         for (int id : requestList) {
             arrayJ.put((new JSONObject()).put("id", id));

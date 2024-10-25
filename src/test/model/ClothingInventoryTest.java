@@ -34,7 +34,7 @@ public class ClothingInventoryTest {
         testInventory.addCloth(testCloth2);
         assertEquals(1753, testInventory.getInventoryList().get(2).getId());
         assertEquals(3, testInventory.getInventoryList().size());
-        
+
     }
 
     @Test
