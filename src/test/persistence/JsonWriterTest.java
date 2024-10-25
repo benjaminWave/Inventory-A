@@ -1,12 +1,11 @@
 package persistence;
 
-import static org.junit.Assert.*;
 
 import java.io.IOException;
 import java.util.List;
 
-import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.*;
 
 import model.Cloth;
 import model.ClothingInventory;

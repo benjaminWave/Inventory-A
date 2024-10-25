@@ -185,4 +185,5 @@ public class ClothingInventoryTest {
     public void testDisplayRankingEmpty() {
         assertEquals("No clothes have been bought!", testInventory.displayRanking());
     }
+    
 }

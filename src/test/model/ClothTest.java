@@ -1,7 +1,11 @@
 package model;
 
+import org.json.JSONObject;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.*;
+
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
 public class ClothTest {
     Cloth testCloth;
@@ -31,5 +35,13 @@ public class ClothTest {
         testCloth.buy();
         testCloth.buy();
         assertEquals(3, testCloth.getPurchaseCount());
+    }
+    @Test
+    public void testToJson(){
+    JSONObject json = testCloth.toJson();
+    assertEquals("Blue", json.getString("color"));
+    assertEquals("Shirt", json.getString("type"));
+    assertEquals(1234, json.getInt("id"));
+    assertEquals(0, json.getInt("count"));
     }
 }
