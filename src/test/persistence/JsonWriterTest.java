@@ -9,7 +9,6 @@ import org.junit.jupiter.api.*;
 import model.Cloth;
 import model.ClothingInventory;
 
-
 public class JsonWriterTest extends JsonTest {
     ClothingInventory inventory;
     Cloth testCloth;
