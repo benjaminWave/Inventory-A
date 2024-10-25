@@ -14,7 +14,7 @@ import java.util.stream.Stream;
 
 //Represents a reader that reads saved JSON data and converts it into an inventory object
 public class JsonReader {
-    private String source;
+    private String source; // file source
 
     // EFFECTS: source is set to address
     public JsonReader(String address) {

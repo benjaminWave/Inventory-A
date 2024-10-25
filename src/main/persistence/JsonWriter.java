@@ -8,9 +8,9 @@ import model.ClothingInventory;
 
 //Represents a writer that writes data from a ClothingInventory object into JSON
 public class JsonWriter {
-    private PrintWriter writer;
-    private static final int TAB = 4;
-    private String destination;
+    private PrintWriter writer; // the writer that writes to file
+    private static final int TAB = 4; // the indentation value
+    private String destination; // file destination
 
     // EFFECTS: Sets the source to address
     public JsonWriter(String address) {
