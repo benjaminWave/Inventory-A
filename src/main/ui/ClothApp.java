@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 import model.Cloth;
 import model.ClothingInventory;
+import persistence.JsonReader;
 import persistence.JsonWriter;
 
 
@@ -14,11 +15,15 @@ public class ClothApp {
     private Scanner input;
     private ClothingInventory inventory;
     private boolean canRun;
-     private JsonWriter jsonWriter;
-     private static final String JSON_STORE = "./data/inventory.json";
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
+    private static final String JSON_STORE = "./data/inventory.json";
 
-    // EFFECTS: Starts the startMenu method
+    //MODIFIES: this 
+    // EFFECTS: Creates a JsonWriter and JsonReader; starts the startMenu method
     public ClothApp(){
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         startMenu();
     }
 
@@ -29,6 +34,8 @@ public class ClothApp {
         System.out.println("type 'e' to view the sales ranking of sold clothing");
         System.out.println("type 'a' to add a cloth item");
         System.out.println("type 'r' to request a cloth item");
+        System.out.println("type 's' to save this inventory");
+        System.out.println("type 'l' to load a inventory");
         System.out.println("type 'x' to exit");
     }
 
@@ -49,6 +56,10 @@ public class ClothApp {
 
             } else if (key.equals("r")) {
                 handleRequests();
+            } else if (key.equals("s")) {
+                saveFile();;
+            } else if (key.equals("l")) {
+                loadFile();;
 
             } else if (key.equals("x")) {
                 canRun = false;
@@ -166,5 +177,38 @@ public class ClothApp {
 
         }
     }
-    
+
+    /*private void handleSaving(){
+        
+    }
+    private void handleLoading(){
+
+    }
+    /*
+    MODIFIES: this
+    EFFECTS: saves the inventory object to file
+    */
+    private void saveFile() {
+        try{
+            jsonWriter.open();
+            jsonWriter.write(inventory);
+            jsonWriter.close();
+            System.out.println("The inventory has been successfully saved to file!"+JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("ERROR, File" +JSON_STORE+ " cannot be written!");
+        }
+        
+    }
+    /*
+    MODIFIES: this
+    EFFECTS: replaces the current inventory with one loaded from file
+    */
+    private void loadFile(){
+        try{
+            this.inventory = jsonReader.read();
+            System.out.println("The inventory has been successfully loaded from file!"+JSON_STORE);
+        }catch (IOException e) {
+            System.out.println("ERROR, File" +JSON_STORE+ " not Found!");
+        }
+    }
 }

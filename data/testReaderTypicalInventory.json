@@ -26,5 +26,19 @@
             "id": 8132,
             "type": "Shirt"
         }
+    ],
+    "sales": [{
+        "color": "Yellow",
+        "count": 2,
+        "id": 8132,
+        "type": "Shirt"
+    },
+    {
+        "color": "Purple",
+        "count": 1,
+        "id": 4932,
+        "type": "Shirt"
+    }
+
     ]
 }

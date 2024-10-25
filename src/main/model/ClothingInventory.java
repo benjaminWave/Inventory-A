@@ -144,6 +144,8 @@ public class ClothingInventory implements Writable {
         JSONObject json = new JSONObject();
         json.put("clothes",clothesToJson());
         json.put("requests",requestsToJson());
+        json.put("sales",salesToJson());
+
 
         return json;
        
@@ -152,6 +154,14 @@ public class ClothingInventory implements Writable {
     private JSONArray clothesToJson(){
         JSONArray arrayJ = new JSONArray();
         for (Cloth cloth : listClothes) {
+            arrayJ.put(cloth.toJson());
+        }
+        return arrayJ;
+    }
+     //EFFECTS: returns the list of sold clothes as a JSONARRAY
+    private JSONArray salesToJson(){
+        JSONArray arrayJ = new JSONArray();
+        for (Cloth cloth : ranking.getRanking()) {
             arrayJ.put(cloth.toJson());
         }
         return arrayJ;

@@ -1,0 +1,27 @@
+{
+    "requests": [
+        {"id": 1234},
+        {"id": 4321}
+    ],
+    "clothes": [],
+    "sales": [
+        {
+            "color": "Red",
+            "count": 2,
+            "id": 1234,
+            "type": "Shirt"
+        },
+        {
+            "color": "Teal",
+            "count": 1,
+            "id": 9876,
+            "type": "Shirt"
+        },
+        {
+            "color": "Blue",
+            "count": 1,
+            "id": 4321,
+            "type": "Shirt"
+        }
+    ]
+}

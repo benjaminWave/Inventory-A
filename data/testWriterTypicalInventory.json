@@ -5,12 +5,6 @@
     ],
     "clothes": [
         {
-            "color": "Yellow",
-            "count": 1,
-            "id": 1753,
-            "type": "Shirt"
-        },
-        {
             "color": "Black",
             "count": 2,
             "id": 4888,
@@ -21,6 +15,26 @@
             "count": 0,
             "id": 1234,
             "type": "Shirt"
+        },
+        {
+            "color": "Yellow",
+            "count": 3,
+            "id": 1753,
+            "type": "Shirt"
+        }
+    ],
+    "sales": [
+        {
+            "color": "Yellow",
+            "count": 3,
+            "id": 1753,
+            "type": "Shirt"
+        },
+        {
+            "color": "Black",
+            "count": 2,
+            "id": 4888,
+            "type": "Trousers"
         }
     ]
 }
