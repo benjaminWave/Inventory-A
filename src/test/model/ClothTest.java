@@ -36,12 +36,13 @@ public class ClothTest {
         testCloth.buy();
         assertEquals(3, testCloth.getPurchaseCount());
     }
+
     @Test
-    public void testToJson(){
-    JSONObject json = testCloth.toJson();
-    assertEquals("Blue", json.getString("color"));
-    assertEquals("Shirt", json.getString("type"));
-    assertEquals(1234, json.getInt("id"));
-    assertEquals(0, json.getInt("count"));
+    public void testToJson() {
+        JSONObject json = testCloth.toJson();
+        assertEquals("Blue", json.getString("color"));
+        assertEquals("Shirt", json.getString("type"));
+        assertEquals(1234, json.getInt("id"));
+        assertEquals(0, json.getInt("count"));
     }
 }

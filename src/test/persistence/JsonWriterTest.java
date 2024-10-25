@@ -1,6 +1,5 @@
 package persistence;
 
-
 import java.io.IOException;
 import java.util.List;
 
@@ -9,8 +8,7 @@ import org.junit.jupiter.api.*;
 
 import model.Cloth;
 import model.ClothingInventory;
-import persistence.JsonReader;
-import persistence.JsonWriter;
+
 
 public class JsonWriterTest extends JsonTest {
     ClothingInventory inventory;
@@ -59,7 +57,7 @@ public class JsonWriterTest extends JsonTest {
     }
 
     @Test
-    public void TestWriteTypicalInventory() {
+    public void testWriteTypicalInventory() {
         try {
             runBefore();
             testScenario();

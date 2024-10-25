@@ -3,7 +3,6 @@ package persistence;
 
 import model.Cloth;
 import model.ClothingInventory;
-import persistence.JsonReader;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.*;
 
