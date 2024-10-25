@@ -67,15 +67,16 @@ public class JsonWriterTest extends JsonTest {
             writer.close();
             JsonReader reader = new JsonReader("./data/testWriterTypicalInventory.json");
             ClothingInventory inventoryRead = reader.read();
-            assertEquals(inventoryRead.getInventoryList().size(), 3);
+            assertEquals(inventoryRead.getInventoryList().size(), 2);
             assertEquals(inventoryRead.getRequestSize(), 2);
             assertEquals(inventoryRead.getRanking().getRanking().size(), 2);
             List<Cloth> clothes = inventory.getInventoryList();
-            testCloth(testCloth.getColor(), testCloth.getClothType(), testCloth.getId(), clothes.get(1));
-            testCloth(testCloth2.getColor(), testCloth2.getClothType(), testCloth2.getId(), clothes.get(2));
-            testCloth(testCloth3.getColor(), testCloth3.getClothType(), testCloth3.getId(), clothes.get(0));
-            String message = "Current Clothes: \n-Black Trousers - 4888 \n-Blue Shirt - 1234 \n-Yellow Shirt - 1753";
+            testCloth(testCloth.getColor(), testCloth.getClothType(), testCloth.getId(), clothes.get(0));
+            testCloth(testCloth2.getColor(), testCloth2.getClothType(), testCloth2.getId(), clothes.get(1));
+            String message = "Current Clothes: \n-Blue Shirt - 1234 \n-Yellow Shirt - 1753";
             assertEquals(message, inventory.viewClothes());
+            message = "Sales Ranking: \n-Yellow Shirt (3) - 1753 \n-Black Trousers (3) - 4888";
+            assertEquals(message, inventory.displayRanking());
 
         } catch (IOException e) {
             fail("Exception should not have been thrown");
@@ -96,6 +97,7 @@ public class JsonWriterTest extends JsonTest {
         inventory.addCloth(testCloth2);
         inventory.buyItem(testCloth2.getId());
         inventory.buyItem(testCloth2.getId());
+        inventory.buyItem(testCloth3.getId());
         inventory.buyItem(testCloth3.getId());
         inventory.removeCloth(testCloth.getId());
         inventory.requestItem(2000);
