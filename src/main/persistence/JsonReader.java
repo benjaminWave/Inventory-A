@@ -39,6 +39,7 @@ public class JsonReader {
         ClothingInventory inventory = new ClothingInventory();
         addClothes(inventory, jsonObject);
         addRequests(inventory, jsonObject);
+        addSales(inventory,jsonObject);
         return inventory;
     }
     //EFFECTS: constructs Clothes from the jsonObject and adds them to inventory
@@ -46,22 +47,30 @@ public class JsonReader {
         JSONArray jsonArray = jsonObject.getJSONArray("clothes");
         for (Object object:jsonArray){
             JSONObject currentObject = (JSONObject)object;
-            addCloth(inventory,currentObject);
+            inventory.addCloth(createCloth(currentObject));
         }
     }
-    //EFFECTS: constructs an instance of a cloth from the jsonObject and adds it to inventory
-    private void addCloth(ClothingInventory inventory,JSONObject jsonObject){
+     //EFFECTS: updates the SalesRanking of the inventory
+     private void addSales(ClothingInventory inventory,JSONObject jsonObject){
+        JSONArray jsonArray = jsonObject.getJSONArray("sales");
+        for (Object object:jsonArray){
+            JSONObject currentObject = (JSONObject)object;
+            buy(inventory,createCloth(currentObject),currentObject);
+        }
+    }
+    //EFFECTS: constructs an instance of a cloth from the jsonObject and returns it
+    private Cloth createCloth(JSONObject jsonObject){
         Cloth cloth = new Cloth(jsonObject.getString("color"), jsonObject.getString("type"), jsonObject.getInt("id"));
-        inventory.addCloth(cloth);
-        buy(inventory,cloth,jsonObject);
+        return cloth;
     }
     //EFFECTS: increments purchase count of an item buy repeatedly buying and adding it to the inventory  
     private void buy(ClothingInventory inventory,Cloth cloth,JSONObject jsonObject){
         int count = 0;
         int max = jsonObject.getInt("count");
         while (max > count ){
-            inventory.buyItem(cloth.getId());
             inventory.addCloth(cloth);
+            inventory.buyItem(cloth.getId());
+            
             count++;
         }
     }

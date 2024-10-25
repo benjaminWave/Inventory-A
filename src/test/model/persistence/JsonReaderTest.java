@@ -7,6 +7,7 @@ import model.ClothingInventory;
 import persistence.JsonReader;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.*;
@@ -44,12 +45,12 @@ public class JsonReaderTest extends JsonTest {
             ClothingInventory inventory = reader.read();
             assertEquals(inventory.getInventoryList().size(), 3);
             assertEquals(inventory.getRequestSize(), 2);
-            assertEquals(1,inventory.getRanking().getRanking().size());
+            assertEquals(2,inventory.getRanking().getRanking().size());
             List<Cloth> clothes = inventory.getInventoryList();
-            testCloth("Red", 0, "Shirt", 1234, clothes.get(0));
-            testCloth("Blue", 0, "Trousers", 4321, clothes.get(1));
-            testCloth("Yellow", 2, "Shirt", 8132, clothes.get(2));
-            String message = "Sales Ranking: \n-Yellow Shirt (2) - 8132";
+            testCloth("Red",  "Shirt", 1234, clothes.get(0));
+            testCloth("Blue", "Trousers", 4321, clothes.get(1));
+            testCloth("Yellow",  "Shirt", 8132, clothes.get(2));
+            String message = "Sales Ranking: \n-Yellow Shirt (2) - 8132 \n-Purple Shirt (1) - 4932";
             assertEquals(message, inventory.displayRanking());
         }catch(IOException e){
             fail("Unable to read from file");
