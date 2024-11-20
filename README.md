@@ -18,3 +18,4 @@ My project, *Inventory A*, is a desktop software that functions as an inventory 
 // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
 //Referenced from  Java Program to Add a JMenuBar and JButton inside the JFrame
 // https://www.geeksforgeeks.org/java-jframe/
+// https://www.javatpoint.com/java-jmenuitem-and-jmenu
