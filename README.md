@@ -21,4 +21,5 @@ My project, *Inventory A*, is a desktop software that functions as an inventory 
 // https://www.javatpoint.com/java-jmenuitem-and-jmenu
 //https://www.javatpoint.com/java-jpopupmenu
 //https://docs.oracle.com/javase/tutorial/uiswing/layout/card.html
-//https://docs.oracle.com/javase/tutorial/uiswing/components/tabbedpane.html
+//https://docs.oracle.com/javase/tutorial/uiswing/components/tabbedpane.html\
+//https://github.students.cs.ubc.ca/CPSC210/C3-LectureLabStarter/blob/main/src/main/gui/TrafficLightGUI.java
