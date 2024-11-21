@@ -1,25 +1,22 @@
 package ui;
 
-
 import java.awt.*;
 
 import javax.swing.*;
 
-
 public class MenuPanel extends JPanel {
     private final Color COLOR = Color.white;
-    private int scaleFactor = 8;
     JButton viewClothesButton;
     JButton viewSalesButton;
     JButton requestButton;
     ClothUI parent;
+
     public MenuPanel(ClothUI parent) {
         super();
         this.parent = parent;
-        // setBorder(BorderFactory.createEmptyBorder(400,500,0,0));
         setBackground(COLOR);
         welcome();
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        setLayout(null);
     }
 
     private void welcome() {
@@ -32,20 +29,14 @@ public class MenuPanel extends JPanel {
         viewClothesButton.setBackground(Color.gray);
         viewClothesButton.addActionListener(parent);
         viewClothesButton.setActionCommand("View List");
+        viewClothesButton.setBounds(1, 1, 600, 100);
         add(viewClothesButton);
         viewSalesButton = new JButton("View the sales ranking of sold clothing");
         viewSalesButton.setForeground(Color.white);
         viewSalesButton.setBackground(Color.gray);
-
+        viewSalesButton.setActionCommand("View Ranking");
+        viewSalesButton.setBounds(1, 103, 600, 100);
         add(viewSalesButton);
-        /*System.out.println("type 'q' to view the list of clothing available for purchase");
-        System.out.println("type 'e' to view the sales ranking of sold clothing");
-        System.out.println("type 'a' to add a cloth item");
-        System.out.println("type 'r' to request a cloth item");
-        System.out.println("type 's' to save this inventory");
-        System.out.println("type 'l' to load a inventory");
-        System.out.println("type 'x' to exit");*/
     }
-
 
 }
