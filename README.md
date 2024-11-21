@@ -19,3 +19,6 @@ My project, *Inventory A*, is a desktop software that functions as an inventory 
 //Referenced from  Java Program to Add a JMenuBar and JButton inside the JFrame
 // https://www.geeksforgeeks.org/java-jframe/
 // https://www.javatpoint.com/java-jmenuitem-and-jmenu
+//https://www.javatpoint.com/java-jpopupmenu
+//https://docs.oracle.com/javase/tutorial/uiswing/layout/card.html
+//https://docs.oracle.com/javase/tutorial/uiswing/components/tabbedpane.html
