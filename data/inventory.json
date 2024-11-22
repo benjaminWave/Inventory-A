@@ -1,26 +1,17 @@
 {
-    "requests": [
-        {"id": 1234},
-        {"id": 4321}
-    ],
+    "requests": [],
     "clothes": [],
     "sales": [
         {
-            "color": "Red",
-            "count": 3,
-            "id": 1234,
+            "color": "YELLOW",
+            "count": 2,
+            "id": 23,
             "type": "Shirt"
         },
         {
-            "color": "Teal",
+            "color": "MAGENTA",
             "count": 1,
-            "id": 9876,
-            "type": "Shirt"
-        },
-        {
-            "color": "Blue",
-            "count": 1,
-            "id": 4321,
+            "id": 3214,
             "type": "Shirt"
         }
     ]

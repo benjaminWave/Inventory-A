@@ -1,0 +1,202 @@
+package ui;
+
+import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
+import java.util.List;
+
+import model.Cloth;
+import java.awt.*;
+import java.awt.event.*;
+
+public class ClothGUI extends JFrame implements ActionListener, ChangeListener {
+
+    private int width = 700;
+    private int height = 1500;
+    private JMenuBar menuBar;
+    private JMenu fileMenu;
+    private JMenuItem saveFile;
+    private JMenuItem loadFile;
+    private JTabbedPane tab;
+    private MenuPanel menu;
+    private InventoryHandler handler;
+    private ListContainer listTab;
+    private String mode;
+    private RankingContainer rankTab;
+
+    public ClothGUI() {
+        super("Clothing Inventory");
+        tab = new JTabbedPane();
+        handler = new InventoryHandler();
+        setSize(width, height);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLayout(new CardLayout());
+
+        createMenuBar();
+        createMain();
+        finish();
+
+    }
+
+    private void createMenuBar() {
+        this.menuBar = new JMenuBar();
+        this.fileMenu = new JMenu("File");
+        this.saveFile = new JMenuItem("Save");
+        this.loadFile = new JMenuItem("Load");
+        fileMenu.add(saveFile);
+        fileMenu.add(loadFile);
+        saveFile.setActionCommand("Save");
+        saveFile.addActionListener(this);
+        loadFile.setActionCommand("Load");
+        loadFile.addActionListener(this);
+        menuBar.add(fileMenu);
+        setJMenuBar(menuBar);
+    }
+
+    private void createMain() {
+        menu = new MenuPanel(this);
+        tab.addTab("MENU", menu);
+        tab.getModel().addChangeListener(this);
+        tab.getSelectedIndex();
+        add(tab, BorderLayout.CENTER);
+
+    }
+
+    private void finish() {
+
+        setResizable(false);
+        setVisible(true);
+    }
+
+    private JPopupMenu questionUser(String message) {
+        JPopupMenu query = new JPopupMenu();
+
+        JMenuItem yes = new JMenuItem("Yes");
+        yes.setActionCommand("Yes");
+        this.mode = message;
+        yes.addActionListener(this);
+        JMenuItem no = new JMenuItem("No");
+        no.setActionCommand("No");
+        no.addActionListener(this);
+        JLabel title = new JLabel("Are you sure you want to " + message + " ?");
+        query.add(title);
+        query.add(yes);
+        query.add(no);
+
+        return query;
+    }
+
+    public InventoryHandler getHandler() {
+        return handler;
+    }
+
+    // EFFECTS: sets the current tab to the List Panel and moves the currentIndex to
+    // 1.
+    public void viewItems() {
+        listTab = new ListContainer(this);
+        tab.addTab("LIST", listTab);
+        tab.setSelectedIndex(1);
+        listTab.update(handler.handleListViewing(), handler.getClothes());
+    }
+
+    public void viewRanking() {
+        rankTab = new RankingContainer(this);
+        tab.addTab("SALES", rankTab);
+        tab.setSelectedIndex(1);
+        rankTab.update(handler.handleRankViewing(), handler.getRanking());
+
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent event) {
+        String action = event.getActionCommand();
+        System.out.print(action);
+        if (action == "Save") {
+            JPopupMenu query = questionUser("save");
+            query.show(this, 50, 50);
+
+        } else if (action == "Load") {
+            JPopupMenu query = questionUser("load");
+            query.show(this, 50, 50);
+        } else if (action == "Yes") {
+            if (mode == "save") {
+                saveFile();
+            } else if (mode == "load") {
+                loadFile();
+            }
+        } else if (action == "View List") {
+            viewItems();
+
+        } else if (action == "View Ranking") {
+
+            viewRanking();
+        }
+    }
+
+    private void saveFile() {
+        JPopupMenu newMenu = new JPopupMenu();
+        boolean hasWorked = handler.handleSave();
+        JLabel messageLabel = (hasWorked == true)?new JLabel("Successfully saved to file!"): new JLabel("Could not save to file!");
+        
+       newMenu.add(messageLabel);
+        newMenu.show(this, 50, 50);
+        
+    }
+
+    private void loadFile(){
+        JPopupMenu newMenu = new JPopupMenu();
+        boolean hasWorked = handler.handleLoad();
+        JLabel messageLabel = (hasWorked == true)?new JLabel("Successfully loaded from file!"): new JLabel("Could not load to file!");
+        
+        newMenu.add(messageLabel);
+        newMenu.show(this, 50, 50);
+        if (tab.getSelectedIndex()== 1) {
+            if (tab.getSelectedComponent() == listTab){
+               
+                viewItems();
+                tab.remove(1);
+            }
+            if (tab.getSelectedComponent() == rankTab){
+               
+                viewRanking();
+                tab.remove(1);
+            }
+        }
+       
+    }
+
+    public boolean receiveData(String color, String type, int id, String action) {
+        if (action == "added") {
+            handler.handleAdd(color, type, id);
+            String items = handler.handleListViewing();
+            List<Cloth> clothes = handler.getClothes();
+            listTab.setConfirmation(true);
+            listTab.update(items, clothes);
+            return true;
+        } else if (action == "removed") {
+            boolean confirm = handler.handleRemove(id);
+            listTab.setConfirmation(confirm);
+            String items = handler.handleListViewing();
+            List<Cloth> clothes = handler.getClothes();
+            listTab.update(items, clothes);
+            return confirm;
+        } else if (action == "bought") {
+            boolean confirm = handler.handleBuy(id);
+            listTab.setConfirmation(confirm);
+            String items = handler.handleListViewing();
+            List<Cloth> clothes = handler.getClothes();
+            listTab.update(items, clothes);
+            return confirm;
+        }
+        return false;
+    }
+
+    @Override
+    public void stateChanged(ChangeEvent e) {
+        if (tab.getSelectedIndex() == 0) {
+            tab.remove(1);
+        }
+    }
+
+}
