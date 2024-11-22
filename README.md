@@ -15,11 +15,16 @@ My project, *Inventory A*, is a desktop software that functions as an inventory 
 
 # Instructions for End User
 
-- You can generate the first required action related to the user story "adding multiple Xs to a Y" by...
-- You can generate the second required action related to the user story "adding multiple Xs to a Y" by...
-- You can locate my visual component by...
-- You can save the state of my application by...
-- You can reload the state of my application by...
+- You can  add a cloth item to the UI by first clicking on the "View the list of clothing available for purchase" button in the "MENU" tab. This will lead you to the "LIST" tab. Thereafter, click on the "Add a cloth item" button. Then select the color, cloth type and enter a 4 digit id. Click the enter button. The cloth item will appear at the upper panel
+- You can remove a cloth item by following the previous instructions to the "LIST" tab. Select the "Remove a cloth item" button. Therafter enter the id of the item you wish to remove from the list above and click the enter button. The item should be removed from the list
+
+- You can buy a cloth item by following the previous instructions to the "LIST" tab. Select the "Buy a cloth item" button. Therafter enter the id of the item you wish to buy from the list above and click the enter button. The item should be removed from the list, but is now present in the sales ranking
+
+- You can view the sales ranking by clicking on the "View the sales ranking of sold clothing" button in the "MENU" tab. This will lead you to the "SALES" tab where the items should be displayed, if any have been purchased.
+- You can add a request by clicking on the "Request item" option in the "MENU" tab. Enter the id of the item you want request and press the enter button.
+- You can locate my visual component when trying to add a cloth item. After selecting the color, the next stage is the type of cloth. Here, you will see two options, shirt and trousers with their respective images. Another visual component is present any time you enter the id of an item, such as in the next step. The enter button uses a stylized image of an enter button
+- You can save the state of my application by clicking the file option at the top left corner. Click the save option and verify the save
+- You can reload the state of my application by clicking the file option at the top left corner. Click the load option and verify the load, the UI should now update to match the file that was loaded.
 
 
 
@@ -32,3 +37,4 @@ My project, *Inventory A*, is a desktop software that functions as an inventory 
 //https://www.javatpoint.com/java-jpopupmenu
 //https://docs.oracle.com/javase/tutorial/uiswing/layout/card.html
 //https://docs.oracle.com/javase/tutorial/uiswing/components/tabbedpane.html\
+//https://www.javatpoint.com/java-swing
