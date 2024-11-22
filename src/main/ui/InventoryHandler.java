@@ -1,5 +1,7 @@
 package ui;
 
+import java.io.IOException;
+import java.util.List;
 
 import model.Cloth;
 import model.ClothingInventory;
@@ -13,14 +15,66 @@ public class InventoryHandler {
     private JsonReader jsonReader;
     private static final String JSON_STORE = "./data/inventory.json";
 
-    public InventoryHandler(){
+    public InventoryHandler() {
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
         inventory = new ClothingInventory();
     }
-    public String handleListViewing(){
-        String message = inventory.viewClothes();
-        return message;
+
+    public String handleListViewing() {
+
+        return inventory.viewClothes();
     }
+
+    public void handleAdd(String color, String type, int id) {
+        inventory.addCloth(new Cloth(color, type, id));
+    }
+
+    public List<Cloth> getClothes() {
+        return inventory.getInventoryList();
+    }
+
+    public String handleRankViewing() {
+        return inventory.displayRanking();
+    }
+
+    public List<Cloth> getRanking() {
+        return inventory.getRanking().getRanking();
+    }
+
+    public boolean handleRemove(int id) {
+        return inventory.removeCloth(id);
+    }
+
+    public boolean handleBuy(int id) {
+        return inventory.buyItem(id);
+    }
+
+    public boolean handleSave() {
+        boolean confirm = false;
+        try {
+            jsonWriter.open();
+            jsonWriter.write(inventory);
+            jsonWriter.close();
+            confirm = true;
+        } catch (IOException e) {
+            confirm = false;
+        }
+
+
+        return confirm;
+    }
+
+    public boolean handleLoad(){
+        boolean confirm = false;
+        try {
+            inventory = jsonReader.read();
+            confirm = true;  
+        } catch (IOException e) {
+            confirm = false;
+        }
+        return confirm;
+    }
+   
 
 }
