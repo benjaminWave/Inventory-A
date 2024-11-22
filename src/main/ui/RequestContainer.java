@@ -6,44 +6,54 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+//Represents the request tab of the UI
 public class RequestContainer extends Container implements ActionListener {
     JPanel mainPanel;
     ClothGUI parent;
     JTextField field;
     JLabel confimation;
-    private final Color COLOR = Color.white;
+    private final Color mainColor = Color.white;
 
+    // EFFECTS: sets this.parent to parent; sets up the mainPanel and confirmation
+    // JLabel
     public RequestContainer(ClothGUI parent) {
         super();
         this.parent = parent;
         setLayout(null);
         mainPanel = initializePanel(new Rectangle(1, 1, parent.getWidth(), parent.getHeight()));
         confimation = new JLabel();
-        confimation.setBounds(1,130,500,100);
+        confimation.setBounds(1, 130, 500, 100);
         mainPanel.add(confimation);
         add(mainPanel);
         idMessage();
 
     }
 
+    // EFFECTS: creates and returns a JPanel based on rect
     private JPanel initializePanel(Rectangle rect) {
         JPanel referencePanel = new JPanel();
-        referencePanel.setBackground(COLOR);
+        referencePanel.setBackground(mainColor);
         referencePanel.setLayout(null);
         referencePanel.setBounds(rect);
         return referencePanel;
     }
 
+    /*
+     * MODIFIES: this
+     * EFFECTS: creates a message to prompt the user to enter the id
+     */
     private void idMessage() {
-     
         JLabel select = new JLabel("Enter the 4 digit id of item: ");
         select.setBackground(Color.gray);
         select.setBounds(1, 1, 500, 100);
         mainPanel.add(select);
         createId();
-
-        
     }
+
+    /*
+     * * MODIFIES: this
+     * EFFECTS: creates a JTextField to handle user input; creates an enter button
+     */
     private void createId() {
         field = new JTextField();
         field.setBounds(1, 100, 100, 20);
@@ -62,18 +72,22 @@ public class RequestContainer extends Container implements ActionListener {
         String cmd = "Request";
         enter.setActionCommand(cmd);
     }
+
+    /*
+     * MODIFIES: this
+     * EFFECTS: Handles the action event for Requesting an item
+     */
     @Override
     public void actionPerformed(ActionEvent event) {
-        if (event.getActionCommand()=="Request"){
+        if (event.getActionCommand() == "Request") {
             int enteredId = Integer.parseInt(field.getText());
-            if (parent.getHandler().handleRequest(enteredId)== true){
-                confimation.setText("Successfully added item " +enteredId+" to Request List!");
-            }else{
-                confimation.setText("Item "+ enteredId+ " is already in the inventory!");
+            if (parent.getHandler().handleRequest(enteredId) == true) {
+                confimation.setText("Successfully added item " + enteredId + " to Request List!");
+            } else {
+                confimation.setText("Item " + enteredId + " is already in the inventory!");
             }
-           field.setText(""); 
+            field.setText("");
         }
     }
-
 
 }
