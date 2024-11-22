@@ -9,9 +9,9 @@ public class MenuPanel extends JPanel {
     JButton viewClothesButton;
     JButton viewSalesButton;
     JButton requestButton;
-    ClothUI parent;
+    ClothGUI parent;
 
-    public MenuPanel(ClothUI parent) {
+    public MenuPanel(ClothGUI parent) {
         super();
         this.parent = parent;
         setBackground(COLOR);
@@ -34,9 +34,20 @@ public class MenuPanel extends JPanel {
         viewSalesButton = new JButton("View the sales ranking of sold clothing");
         viewSalesButton.setForeground(Color.white);
         viewSalesButton.setBackground(Color.gray);
+        viewSalesButton.addActionListener(parent);
         viewSalesButton.setActionCommand("View Ranking");
         viewSalesButton.setBounds(1, 103, 600, 100);
         add(viewSalesButton);
+
+        requestButton = new JButton("Request Item");
+        requestButton.setForeground(Color.white);
+        requestButton.setBackground(Color.gray);
+        requestButton.addActionListener(parent);
+        requestButton.setActionCommand("Request");
+        requestButton.setBounds(1, 206, 600, 100);
+        add(requestButton);
+
+
     }
 
 }
