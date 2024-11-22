@@ -22,6 +22,7 @@ public class ClothGUI extends JFrame implements ActionListener, ChangeListener {
     private MenuPanel menu;
     private InventoryHandler handler;
     private ListContainer listTab;
+    private RequestContainer requestTab;
     private String mode;
     private RankingContainer rankTab;
 
@@ -107,6 +108,11 @@ public class ClothGUI extends JFrame implements ActionListener, ChangeListener {
         rankTab.update(handler.handleRankViewing(), handler.getRanking());
 
     }
+    private void requestItem(){
+requestTab = new RequestContainer(this);
+tab.addTab("REQUEST",requestTab);
+tab.setSelectedIndex(1);
+    }
 
     @Override
     public void actionPerformed(ActionEvent event) {
@@ -131,8 +137,12 @@ public class ClothGUI extends JFrame implements ActionListener, ChangeListener {
         } else if (action == "View Ranking") {
 
             viewRanking();
+        }else if (action == "Request"){
+            requestItem();
         }
     }
+
+   
 
     private void saveFile() {
         JPopupMenu newMenu = new JPopupMenu();
@@ -160,6 +170,10 @@ public class ClothGUI extends JFrame implements ActionListener, ChangeListener {
             if (tab.getSelectedComponent() == rankTab){
                
                 viewRanking();
+                tab.remove(1);
+            }
+            if (tab.getSelectedComponent() == requestTab){
+                requestItem();
                 tab.remove(1);
             }
         }

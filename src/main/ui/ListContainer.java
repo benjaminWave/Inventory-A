@@ -179,7 +179,7 @@ public class ListContainer extends Container implements ActionListener {
         currentPanel.add(enter);
         enter.addActionListener(this);
         String cmd = (use == "Add") ? "Enter" : ((use == "Remove") ? "Enter2" : "Enter3");
-        System.out.println(cmd);
+
         enter.setActionCommand(cmd);
     }
 

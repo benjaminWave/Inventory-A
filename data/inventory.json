@@ -1,6 +1,16 @@
 {
-    "requests": [],
-    "clothes": [],
+    "requests": [
+        {"id": 4321},
+        {"id": 3234},
+        {"id": 3483},
+        {"id": 3239}
+    ],
+    "clothes": [{
+        "color": "BLUE",
+        "count": 0,
+        "id": 3234,
+        "type": "Trousers"
+    }],
     "sales": [
         {
             "color": "YELLOW",

@@ -75,6 +75,9 @@ public class InventoryHandler {
         }
         return confirm;
     }
+    public boolean handleRequest(int id){
+        return inventory.requestItem(id);
+    }
    
 
 }
