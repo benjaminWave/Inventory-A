@@ -27,6 +27,7 @@ public class RequestContainer extends Container implements ActionListener {
         count = new JLabel();
         count.setBounds(1,235,500,100);
         mainPanel.add(confimation);
+        mainPanel.add(count);
         add(mainPanel);
         idMessage();
 
