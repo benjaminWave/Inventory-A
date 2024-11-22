@@ -2,25 +2,21 @@ package ui;
 
 import java.util.List;
 import java.util.*;
-import java.util.jar.JarEntry;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-import org.xml.sax.SAXException;
-
 import model.Cloth;
 
 public class ListContainer extends Container implements ActionListener {
     private final Color COLOR = Color.white;
-    private JList list;
     List<String> thisList = new ArrayList<>();
     private JButton addButton;
     private JButton removeButton;
     private JButton buyButton;
-    private ClothUI parent;
+    private ClothGUI parent;
     private JPanel mainPanel;
     private JPanel lastPanel;
     private CardLayout card;
@@ -36,7 +32,7 @@ public class ListContainer extends Container implements ActionListener {
     JScrollPane scroll;
     private JTextField field;
 
-    public ListContainer(ClothUI parent) {
+    public ListContainer(ClothGUI parent) {
         container = new Container();
         map = new HashMap<>();
         card = new CardLayout();
@@ -54,9 +50,7 @@ public class ListContainer extends Container implements ActionListener {
         scroll.setBounds(1, 1, parent.getWidth() - 15, parent.getHeight() / 2);
         add(scroll);
         createAdd();
-        list = new JList<>();
         this.parent = parent;
-        mainPanel.add(list);
 
     }
 
@@ -241,7 +235,7 @@ public class ListContainer extends Container implements ActionListener {
     private void createList(List<Cloth> clothes) {
 
         for (Cloth cloth : clothes) {
-            JLabel item = new JLabel(cloth.getColor() + " " + cloth.getClothType() + " : " + cloth.getId());
+            JLabel item = new JLabel(cloth.getColor() + " " + cloth.getClothType() + ", ID: " + cloth.getId());
             item.setBounds(1, 1 + clothes.indexOf(cloth) * 20, 500, 20);
             mainPanel.add(item);
         }
