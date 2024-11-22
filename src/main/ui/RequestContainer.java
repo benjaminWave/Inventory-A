@@ -12,6 +12,7 @@ public class RequestContainer extends Container implements ActionListener {
     ClothGUI parent;
     JTextField field;
     JLabel confimation;
+    JLabel count;
     private final Color mainColor = Color.white;
 
     // EFFECTS: sets this.parent to parent; sets up the mainPanel and confirmation
@@ -23,6 +24,8 @@ public class RequestContainer extends Container implements ActionListener {
         mainPanel = initializePanel(new Rectangle(1, 1, parent.getWidth(), parent.getHeight()));
         confimation = new JLabel();
         confimation.setBounds(1, 130, 500, 100);
+        count = new JLabel();
+        count.setBounds(1,235,500,100);
         mainPanel.add(confimation);
         add(mainPanel);
         idMessage();
@@ -87,6 +90,7 @@ public class RequestContainer extends Container implements ActionListener {
                 confimation.setText("Item " + enteredId + " is already in the inventory!");
             }
             field.setText("");
+            count.setText("Request Size: "+ parent.getHandler().getRequestSize());
         }
     }
 

@@ -46,6 +46,10 @@ public class InventoryHandler {
         return inventory.getRanking().getRanking();
     }
 
+    public int getRequestSize(){
+        return inventory.getRequestSize();
+    }
+
     // MODIFIES: this
     // EFFECTS: removes a cloth item based on id and confirms if this was successful
     public boolean handleRemove(int id) {
