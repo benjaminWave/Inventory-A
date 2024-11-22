@@ -11,12 +11,12 @@ import javax.swing.JScrollPane;
 
 import model.Cloth;
 
-public class RankingPanel extends Container {
-    ClothUI parent;
+public class RankingContainer extends Container {
+    ClothGUI parent;
     private final Color COLOR = Color.white;
     JScrollPane scroll;
     JPanel mainPanel;
-    public RankingPanel(ClothUI parent){
+    public RankingContainer(ClothGUI parent){
         super();
         this.parent = parent;
         setLayout(null);
