@@ -13,6 +13,16 @@ My project, *Inventory A*, is a desktop software that functions as an inventory 
 - As a user, I want to be able to load my inventory from file
 
 
+# Instructions for End User
+
+- You can generate the first required action related to the user story "adding multiple Xs to a Y" by...
+- You can generate the second required action related to the user story "adding multiple Xs to a Y" by...
+- You can locate my visual component by...
+- You can save the state of my application by...
+- You can reload the state of my application by...
+
+
+
 
 // Referenced from the JsonSerialization Demo
 // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo

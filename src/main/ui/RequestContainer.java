@@ -25,10 +25,10 @@ public class RequestContainer extends Container implements ActionListener {
         confimation = new JLabel();
         confimation.setBounds(1, 130, 500, 100);
         count = new JLabel();
-        count.setBounds(1,235,500,100);
+        count.setBounds(1, 235, 500, 100);
         mainPanel.add(confimation);
         mainPanel.add(count);
-        count.setText("Request Size: "+ parent.getHandler().getRequestSize());
+        count.setText("Request Size: " + parent.getHandler().getRequestSize());
         add(mainPanel);
         idMessage();
 
@@ -92,7 +92,7 @@ public class RequestContainer extends Container implements ActionListener {
                 confimation.setText("Item " + enteredId + " is already in the inventory!");
             }
             field.setText("");
-            count.setText("Request Size: "+ parent.getHandler().getRequestSize());
+            count.setText("Request Size: " + parent.getHandler().getRequestSize());
         }
     }
 

@@ -219,25 +219,14 @@ public class ListContainer extends Container implements ActionListener {
      * MODIFIES: this
      * EFFECTS: adds cloth buttons to the currentPanel
      */
-    @SuppressWarnings("methodlength")
     private void createType(JPanel currentPanel) {
-        shirtImage = new ImageIcon(
-                "C:\\Users\\user\\Documents\\CPSC210 folder\\0000\\ProjectStarter\\data\\images\\shirt.jpg");
-        Image image = shirtImage.getImage();
-        image = image.getScaledInstance(200, 200, 0);
-        shirtImage = new ImageIcon(image);
+        createImages();
         JButton shirtButton = new JButton(shirtImage);
-
         JLabel shirtLabel = new JLabel("SHIRT");
         shirtButton.setBounds(1, 100, 180, 180);
         shirtLabel.setBounds(1, 280, 80, 80);
         currentPanel.add(shirtButton);
         currentPanel.add(shirtLabel);
-        trousersImage = new ImageIcon(
-                "C:\\Users\\user\\Documents\\CPSC210 folder\\0000\\ProjectStarter\\data\\images\\trousers.png");
-        Image image2 = trousersImage.getImage();
-        image2 = image2.getScaledInstance(200, 200, 0);
-        trousersImage = new ImageIcon(image2);
         JButton trousersButton = new JButton(trousersImage);
         JLabel trousersLabel = new JLabel("TROUSERS");
         trousersButton.setBounds(200, 100, 180, 180);
@@ -248,6 +237,21 @@ public class ListContainer extends Container implements ActionListener {
         shirtButton.addActionListener(this);
         trousersButton.setActionCommand("Trousers");
         trousersButton.addActionListener(this);
+    }
+
+    // MODIFIES: this
+    // EFFECTS: sets shirtImage and trousersImage to an ImageIcon from file
+    private void createImages() {
+        shirtImage = new ImageIcon(
+                "C:\\Users\\user\\Documents\\CPSC210 folder\\0000\\ProjectStarter\\data\\images\\shirt.jpg");
+        Image image = shirtImage.getImage();
+        image = image.getScaledInstance(200, 200, 0);
+        shirtImage = new ImageIcon(image);
+        trousersImage = new ImageIcon(
+                "C:\\Users\\user\\Documents\\CPSC210 folder\\0000\\ProjectStarter\\data\\images\\trousers.png");
+        Image image2 = trousersImage.getImage();
+        image2 = image2.getScaledInstance(200, 200, 0);
+        trousersImage = new ImageIcon(image2);
     }
 
     /*

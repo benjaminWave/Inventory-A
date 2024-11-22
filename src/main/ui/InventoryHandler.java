@@ -46,7 +46,7 @@ public class InventoryHandler {
         return inventory.getRanking().getRanking();
     }
 
-    public int getRequestSize(){
+    public int getRequestSize() {
         return inventory.getRequestSize();
     }
 
