@@ -151,7 +151,6 @@ public class ClothGUI extends JFrame implements ActionListener, ChangeListener {
     @Override
     public void actionPerformed(ActionEvent event) {
         String action = event.getActionCommand();
-        System.out.print(action);
         if (action == "Save") {
             JPopupMenu query = questionUser("save");
             query.show(this, 50, 50);
@@ -227,19 +226,16 @@ public class ClothGUI extends JFrame implements ActionListener, ChangeListener {
             handler.handleAdd(color, type, id);
             String items = handler.handleListViewing();
             List<Cloth> clothes = handler.getClothes();
-            listTab.setConfirmation(true);
             listTab.update(items, clothes);
             return true;
         } else if (action == "removed") {
             boolean confirm = handler.handleRemove(id);
-            listTab.setConfirmation(confirm);
             String items = handler.handleListViewing();
             List<Cloth> clothes = handler.getClothes();
             listTab.update(items, clothes);
             return confirm;
         } else if (action == "bought") {
             boolean confirm = handler.handleBuy(id);
-            listTab.setConfirmation(confirm);
             String items = handler.handleListViewing();
             List<Cloth> clothes = handler.getClothes();
             listTab.update(items, clothes);
