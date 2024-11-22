@@ -202,7 +202,7 @@ public class ListContainer extends Container implements ActionListener {
 
         JButton enter = new JButton();
         ImageIcon icon = new ImageIcon(
-                "C:\\Users\\user\\Documents\\CPSC210 folder\\0000\\ProjectStarter\\data\\images\\enter.png");
+                "data/images/enter.png");
         Image image = icon.getImage();
         image = image.getScaledInstance(60, 20, 0);
         icon = new ImageIcon(image);
@@ -243,12 +243,12 @@ public class ListContainer extends Container implements ActionListener {
     // EFFECTS: sets shirtImage and trousersImage to an ImageIcon from file
     private void createImages() {
         shirtImage = new ImageIcon(
-                "C:\\Users\\user\\Documents\\CPSC210 folder\\0000\\ProjectStarter\\data\\images\\shirt.jpg");
+                "data/images/shirt.jpg");
         Image image = shirtImage.getImage();
         image = image.getScaledInstance(200, 200, 0);
         shirtImage = new ImageIcon(image);
         trousersImage = new ImageIcon(
-                "C:\\Users\\user\\Documents\\CPSC210 folder\\0000\\ProjectStarter\\data\\images\\trousers.png");
+                "data/images/trousers.png");
         Image image2 = trousersImage.getImage();
         image2 = image2.getScaledInstance(200, 200, 0);
         trousersImage = new ImageIcon(image2);

@@ -66,7 +66,7 @@ public class RequestContainer extends Container implements ActionListener {
 
         JButton enter = new JButton();
         ImageIcon icon = new ImageIcon(
-                "C:\\Users\\user\\Documents\\CPSC210 folder\\0000\\ProjectStarter\\data\\images\\enter.png");
+                "data/images/enter.png");
         Image image = icon.getImage();
         image = image.getScaledInstance(60, 20, 0);
         icon = new ImageIcon(image);
