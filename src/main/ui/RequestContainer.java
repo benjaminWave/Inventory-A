@@ -28,6 +28,7 @@ public class RequestContainer extends Container implements ActionListener {
         count.setBounds(1,235,500,100);
         mainPanel.add(confimation);
         mainPanel.add(count);
+        count.setText("Request Size: "+ parent.getHandler().getRequestSize());
         add(mainPanel);
         idMessage();
 
