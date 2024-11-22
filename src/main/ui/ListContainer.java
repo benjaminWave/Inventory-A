@@ -271,8 +271,8 @@ public class ListContainer extends Container implements ActionListener {
     }
 
     // MODIFIES: this
-    // EFFECTS: creates a list of JLabels based on the clothes that is added to the
-    // mainPanel
+    // EFFECTS: creates a list of JLabels, based on the clothes, that is added to
+    // the mainPanel
     private void createList(List<Cloth> clothes) {
         for (Cloth cloth : clothes) {
             JLabel item = new JLabel(cloth.getColor() + " " + cloth.getClothType() + ", ID: " + cloth.getId());
