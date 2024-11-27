@@ -31,6 +31,9 @@ public class ClothingInventory implements Writable {
      */
     public void addCloth(Cloth cloth) {
         listClothes.add(cloth);
+        EventLog.getInstance().logEvent(new Event(
+                cloth.getColor() + " " + cloth.getClothType() + " of ID: " + cloth.getId()
+                        + " has been added to the inventory"));
     }
 
     /*
@@ -46,6 +49,8 @@ public class ClothingInventory implements Writable {
             return false;
         }
         listClothes.remove(foundIdIndex);
+        EventLog.getInstance().logEvent(new Event(
+                "Cloth of ID: " + clothId + " has been removed from the inventory"));
         return true;
     }
 
@@ -64,7 +69,10 @@ public class ClothingInventory implements Writable {
         }
         ranking.update(listClothes.get(foundIdIndex));
         ranking.organize();
+        EventLog.getInstance().logEvent(new Event("The sales ranking of the inventory has been updated and organized"));
         listClothes.remove(foundIdIndex);
+        EventLog.getInstance().logEvent(new Event(
+                "Cloth of ID: " + clothId + " has been bought from the inventory"));
         return true;
 
     }
@@ -82,6 +90,8 @@ public class ClothingInventory implements Writable {
             return false;
         }
         requestList.add(clothId);
+        EventLog.getInstance().logEvent(new Event(
+                "Cloth of ID: " + clothId + " has been requested to the inventory"));
         return true;
     }
 
