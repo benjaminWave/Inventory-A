@@ -128,7 +128,7 @@ public class ListContainer extends Container implements ActionListener {
 
         container.add("Color", newPanel);
         card.show(container, "Color");
-        createcolors(newPanel);
+        createColors(newPanel);
     }
 
     /*
@@ -259,7 +259,7 @@ public class ListContainer extends Container implements ActionListener {
      * EFFECTS: adds color buttons to currentPanel and updates the map to match
      * color to string
      */
-    private void createcolors(JPanel currentPanel) {
+    private void createColors(JPanel currentPanel) {
         int base = 1;
         for (int i = 0; i < colors.length; i++) {
             JButton redButton = new JButton();
