@@ -31,40 +31,54 @@ My project, *Inventory A*, is a desktop software that functions as an inventory 
 # Phase 4: Task 2
 *Sample of Console after closing GUI*
 
-Cloth of ID: 2000 has been bought from the inventory
 Fri Nov 29 13:35:02 PST 2024
 The sales ranking of the inventory has been updated and organized
+
 Fri Nov 29 13:35:07 PST 2024
 Cloth of ID: 4332 has been removed from the inventory
+
 Fri Nov 29 13:35:13 PST 2024
 Cloth of ID: 1234 has been requested to the inventory
+
 Fri Nov 29 13:35:15 PST 2024
 Cloth of ID: 2000 has been bought from the inventory
+
 Fri Nov 29 13:35:02 PST 2024
 The sales ranking of the inventory has been updated and organized
+
 Fri Nov 29 13:35:07 PST 2024
 Cloth of ID: 2000 has been bought from the inventory
+
 Fri Nov 29 13:35:02 PST 2024
 The sales ranking of the inventory has been updated and organized
 Cloth of ID: 2000 has been bought from the inventory
+
 Fri Nov 29 13:35:02 PST 2024
 Cloth of ID: 2000 has been bought from the inventory
-Fri Nov 29 13:35:02 PST 2024
-The sales ranking of the inventory has been updated and organized
-Fri Nov 29 13:35:07 PST 2024
-Cloth of ID: 4332 has been removed from the inventory
-Cloth of ID: 2000 has been bought from the inventory
-Fri Nov 29 13:35:02 PST 2024
-Cloth of ID: 2000 has been bought from the inventory
-Cloth of ID: 2000 has been bought from the inventory
+
 Fri Nov 29 13:35:02 PST 2024
 The sales ranking of the inventory has been updated and organized
+
 Fri Nov 29 13:35:07 PST 2024
 Cloth of ID: 4332 has been removed from the inventory
+Cloth of ID: 2000 has been bought from the inventory
+
+Fri Nov 29 13:35:02 PST 2024
+Cloth of ID: 2000 has been bought from the inventory
+Cloth of ID: 2000 has been bought from the inventory
+
+Fri Nov 29 13:35:02 PST 2024
+The sales ranking of the inventory has been updated and organized
+
+Fri Nov 29 13:35:07 PST 2024
+Cloth of ID: 4332 has been removed from the inventory
+
 Fri Nov 29 13:35:13 PST 2024
 Cloth of ID: 1234 has been requested to the inventory
+
 Fri Nov 29 13:35:15 PST 2024
 Cloth of ID: 4321 has been requested to the inventory
+
 Fri Nov 29 13:35:17 PST 2024
 Cloth of ID: 8888 has been requested to the inventory
 
