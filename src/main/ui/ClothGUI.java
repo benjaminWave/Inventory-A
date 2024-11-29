@@ -16,7 +16,7 @@ import java.awt.event.*;
 public class ClothGUI extends JFrame implements ActionListener, ChangeListener, WindowListener {
 
     private int width = 700;
-    private int height = 1500;
+    private int height = 700;
     private JMenuBar menuBar;
     private JMenu fileMenu;
     private JMenuItem saveFile;
