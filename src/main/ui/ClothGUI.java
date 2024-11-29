@@ -256,53 +256,34 @@ public class ClothGUI extends JFrame implements ActionListener, ChangeListener, 
         }
     }
 
+    // EFFECTS: prints out every event in the given event log to the console
     public void printLog(EventLog el) {
         for (Event e : el) {
             System.out.println(e.toString());
         }
     }
 
-    public void displayMessage(String msg) {
-        System.out.println(msg);
-        System.out.println();
-    }
-
+    // EFFECTS: prints out the content of the EventLog when the GUI is closed
     public void windowClosing(WindowEvent e) {
-        displayMessage("WindowListener method called: windowClosed.");
         printLog(EventLog.getInstance());
     }
 
     public void windowClosed(WindowEvent e) {
-        // This will only be seen on standard output.
-        displayMessage("WindowListener method called: windowClosed.");
     }
 
     public void windowOpened(WindowEvent e) {
-        displayMessage("WindowListener method called: windowOpened.");
     }
 
     public void windowIconified(WindowEvent e) {
-        displayMessage("WindowListener method called: windowIconified.");
     }
 
     public void windowDeiconified(WindowEvent e) {
-        displayMessage("WindowListener method called: windowDeiconified.");
     }
 
     public void windowActivated(WindowEvent e) {
-        displayMessage("WindowListener method called: windowActivated.");
     }
 
     public void windowDeactivated(WindowEvent e) {
-        displayMessage("WindowListener method called: windowDeactivated.");
-    }
-
-    public void windowGainedFocus(WindowEvent e) {
-        displayMessage("WindowFocusListener method called: windowGainedFocus.");
-    }
-
-    public void windowLostFocus(WindowEvent e) {
-        displayMessage("WindowFocusListener method called: windowLostFocus.");
     }
 
 }

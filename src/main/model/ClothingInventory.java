@@ -27,7 +27,8 @@ public class ClothingInventory implements Writable {
 
     /*
      * MODIFIES: this
-     * EFFECTS: Adds a cloth object to the list
+     * EFFECTS: Adds a cloth object to the list; it logs the event of adding the
+     * cloth
      */
     public void addCloth(Cloth cloth) {
         listClothes.add(cloth);
@@ -40,7 +41,7 @@ public class ClothingInventory implements Writable {
      * REQUIRES: clothId is non-negative and clothId is <= 9999
      * MODIFIES: this
      * EFFECTS: Searches the clothing list for an instance of the given ID and
-     * removes the corresponding cloth.
+     * removes the corresponding cloth; it logs the event of removing the cloth
      * If the item is found, it returns true, false otherwise
      */
     public boolean removeCloth(int clothId) {
@@ -58,8 +59,9 @@ public class ClothingInventory implements Writable {
      * REQUIRES: clothId is non-negative and clothId is <= 9999
      * MODIFIES: this
      * EFFECTS: Searches the clothing list for an instance of the given ID and
-     * removes the corresponding cloth
-     * while updating ranking. If the item is found, it returns true;
+     * removes the corresponding cloth,
+     * while updating ranking; it logs the event of buying the cloth and updating
+     * the ranking. If the item is found, it returns true;
      * false otherwise
      */
     public boolean buyItem(int clothId) {
@@ -69,10 +71,11 @@ public class ClothingInventory implements Writable {
         }
         ranking.update(listClothes.get(foundIdIndex));
         ranking.organize();
-        EventLog.getInstance().logEvent(new Event("The sales ranking of the inventory has been updated and organized"));
+
         listClothes.remove(foundIdIndex);
         EventLog.getInstance().logEvent(new Event(
                 "Cloth of ID: " + clothId + " has been bought from the inventory"));
+        EventLog.getInstance().logEvent(new Event("The sales ranking of the inventory has been updated and organized"));
         return true;
 
     }
@@ -83,6 +86,7 @@ public class ClothingInventory implements Writable {
      * EFFECTS: Searches the clothing list for an instance of the given ID.
      * If the item isn't found it adds the item's id to the requestList and returns
      * true ; false otherwise
+     * it logs the event of requesting the cloth if it is not already on the list
      */
     public boolean requestItem(int clothId) {
         int foundIdIndex = searchListForClothes(clothId);

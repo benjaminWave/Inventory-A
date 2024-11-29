@@ -1,30 +1,21 @@
 {
-    "requests": [{"id": 4321}],
-    "clothes": [
-        {
-            "color": "PINK",
-            "count": 0,
-            "id": 2345,
-            "type": "Trousers"
-        },
-        {
-            "color": "BLACK",
-            "count": 0,
-            "id": 8765,
-            "type": "Trousers"
-        }
+    "requests": [
+        {"id": 1234},
+        {"id": 4321},
+        {"id": 8888}
     ],
+    "clothes": [],
     "sales": [
         {
-            "color": "BLUE",
-            "count": 1,
-            "id": 4321,
-            "type": "Trousers"
+            "color": "RED",
+            "count": 2,
+            "id": 1234,
+            "type": "Shirt"
         },
         {
-            "color": "PINK",
+            "color": "WHITE",
             "count": 1,
-            "id": 1234,
+            "id": 2000,
             "type": "Shirt"
         }
     ]
