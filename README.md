@@ -71,8 +71,14 @@ Cloth of ID: 8888 has been requested to the inventory
 
 
 
+# Phase 4: Task 3
+In reference to the UML diagram, both the ClothingInventory and SalesRanking are made up of a collection of Cloth objects. Within the code, both add cloth objects to their list, but SalesRanking ranks its received objects for ClothingInventory's use. A change would be to implement a bidirectional relationship between SalesRanking and ClothingInventory with a multiplicity of 1 for each side and let SalesRanking access ClothingInventory's list. This way, only the Inventory handles the creation of the list of clothes. But in this case, the cloth Object would need a new field to show quantity; an alternative to this would be to have 2 lists within the clothing inventory that contains bought clothes. 
+
+Within the code, there is some duplication that could be refactored. In the ClothingInventory class, there is some duplicate code for the buy and remove methods. They both remove clothes from the inventory, but the buy method updates the ranking. I could refactor this by removing the duplication and using a helper method that returns a boolean depending on if a cloth item was found. A similar issue is in ClothGUI where viewItems and viewRankings are very similar and could be merged into a single method that takes a String parameter to show what is being viewed and because both RankingContainer and InventoryContainer extend Container, a Container parameter can be passed as an argument. The ListContainer has a color conversion method that could be refactored into another class that handles that responsibility.
 
 
+
+# References
 // Referenced from the JsonSerialization Demo
 // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
 //Referenced from  Java Program to Add a JMenuBar and JButton inside the JFrame
@@ -83,4 +89,5 @@ Cloth of ID: 8888 has been requested to the inventory
 //https://docs.oracle.com/javase/tutorial/uiswing/components/tabbedpane.html\
 //https://www.javatpoint.com/java-swing
 
+// Referenced from windowListener tutorial
 //https://docs.oracle.com/javase/tutorial/uiswing/events/windowlistener.html
