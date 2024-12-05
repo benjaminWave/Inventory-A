@@ -13,7 +13,7 @@ My project, *Inventory A*, is a desktop software that functions as an inventory 
 - As a user, I want to be able to load my inventory from file
 
 
-# Instructions for End User
+## Instructions for End User
 
 - You can  add a cloth item to the UI by first clicking on the "View the list of clothing available for purchase" button in the "MENU" tab. This will lead you to the "LIST" tab. Thereafter, click on the "Add a cloth item" button. Then select the color, cloth type and enter a 4 digit id. Click the enter button. The cloth item will appear at the upper panel
 - You can remove a cloth item by following the previous instructions to the "LIST" tab. Select the "Remove a cloth item" button. Therafter enter the id of the item you wish to remove from the list above and click the enter button. The item should be removed from the list
@@ -28,7 +28,7 @@ My project, *Inventory A*, is a desktop software that functions as an inventory 
 
 
 
-# Phase 4: Task 2
+## Phase 4: Task 2
 *Sample of Console after closing GUI*
 
 Fri Nov 29 13:35:02 PST 2024
@@ -85,14 +85,14 @@ Cloth of ID: 8888 has been requested to the inventory
 
 
 
-# Phase 4: Task 3
+## Phase 4: Task 3
 In reference to the UML diagram, both the ClothingInventory and SalesRanking are made up of a collection of Cloth objects. Within the code, both add cloth objects to their list, but SalesRanking ranks its received objects for ClothingInventory's use. A change would be to implement a bidirectional relationship between SalesRanking and ClothingInventory with a multiplicity of 1 for each side and let SalesRanking access ClothingInventory's list. This way, only the Inventory handles the creation of the list of clothes. But in this case, the cloth Object would need a new field to show quantity; an alternative to this would be to have 2 lists within the clothing inventory that contains bought clothes. 
 
 Within the code, there is some duplication that could be refactored. In the ClothingInventory class, there is some duplicate code for the buy and remove methods. They both remove clothes from the inventory, but the buy method updates the ranking. I could refactor this by removing the duplication and using a helper method that returns a boolean depending on if a cloth item was found. A similar issue is in ClothGUI where viewItems and viewRankings are very similar and could be merged into a single method that takes a String parameter to show what is being viewed and because both RankingContainer and InventoryContainer extend Container, a Container parameter can be passed as an argument. The ListContainer has a color conversion method that could be refactored into another class that handles that responsibility.
 
 
 
-# References
+## References
 // Referenced from the JsonSerialization Demo
 // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
 //Referenced from  Java Program to Add a JMenuBar and JButton inside the JFrame
