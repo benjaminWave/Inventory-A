@@ -4,7 +4,20 @@
         {"id": 4321},
         {"id": 8888}
     ],
-    "clothes": [],
+    "clothes": [
+        {
+            "color": "ORANGE",
+            "count": 0,
+            "id": 3221,
+            "type": "Shirt"
+        },
+        {
+            "color": "BLUE",
+            "count": 0,
+            "id": 2123,
+            "type": "Trousers"
+        }
+    ],
     "sales": [
         {
             "color": "RED",
